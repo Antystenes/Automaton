@@ -1,7 +1,6 @@
 --GENERATING AUTOMATON FROM REGEXP
 module RegexpParser where
 import Lib
-import qualified Data.HashMap as HM
 import qualified Data.Set as S
 
 data Regexp = Sym Char --symbol
@@ -12,13 +11,14 @@ data Regexp = Sym Char --symbol
             | Conc Regexp Regexp--concatenation
             | Eps deriving (Show, Eq)
 
+data ParsingState = ParsingState { result :: Regexp,
+                                   nesting :: Int,
+                                   remaining :: String
+                                 } deriving Show
 
 parser :: ParsingState -> ParsingState
 parser (ParsingState st n []) = (ParsingState st n [])
-parser a@(ParsingState st n (x:xs)) = case x of
---    '+' -> parser $ ParsingState (Plus st) n xs
---    '*' -> parser $ ParsingState (Star st) n xs
---    '?' -> parser $ ParsingState (Ques st) n xs
+parser (ParsingState st n (x:xs)) = case x of
     '|' -> (if (n > (nesting subparse)) then id else parser) $ ParsingState (Alt st (result subparse)) (nesting subparse) (remaining subparse)
       where subparse = parser $ ParsingState Eps n xs
     '\\'-> parser $ ParsingState (if st /= Eps then Conc st (Sym (head xs)) else Sym (head xs)) n (tail xs)
@@ -39,11 +39,6 @@ parserHelper1 (x: _) = case x of
 parserHelper2 :: String -> String
 parserHelper2 a@(x:xs) = if x `elem` "+*?" then xs else a
 parserHelper2 [] = []
-
-data ParsingState = ParsingState { result :: Regexp,
-                                   nesting :: Int,
-                                   remaining :: String
-                                 } deriving Show
 
 parse :: String -> Regexp
 parse = result . parser . ParsingState Eps 0
