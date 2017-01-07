@@ -1,32 +1,47 @@
 
 ==================== FINAL INTERFACE ====================
-2016-11-29 17:44:11.503396941 UTC
+2016-12-30 12:23:32.13159816 UTC
 
-interface Automaton-0.1.0.0-6bZeNUyyycTD0CxAwaZN0W:Lib 8001
-  interface hash: fa32702d92105fdce4f06932387f2430
-  ABI hash: 0441e0868569244f02f36ea3e813d319
-  export-list hash: fb72aff9f2a6714aefd0d73eafc25054
-  orphan hash: a22fb138ea1c99838534032f76932b81
+interface Automaton-0.1.0.0-A8Lue7XUpdkBOExGdwpYs1:Lib 8001
+  interface hash: d45e582af99d7928057131597aae5429
+  ABI hash: bf820d6046142f50864c01c57096a402
+  export-list hash: 04860946fef934c5fc56719a9b6ed0eb
+  orphan hash: c2a1e815b3bb789866cb2cfdc22e92f4
   flag hash: b159a15c55fa7c6870cb2eb79bbae5a5
   sig of: Nothing
   used TH splices: False
   where
 exports:
+  Lib.acceptingStates
   Lib.addAcceptState
+  Lib.addEpsilon
   Lib.addTransFromList
   Lib.addTransition
+  Lib.determinization
+  Lib.determinize
+  Lib.determinizeTransitions
   Lib.emptyAutomaton
+  Lib.extractAlphabet
+  Lib.extractStates
+  Lib.flattenSet
+  Lib.generateNamesMap
   Lib.initAutomaton
   Lib.isAccepted
+  Lib.mergeTrans
   Lib.parseLines
   Lib.parseString
+  Lib.prependToState
   Lib.processChar
   Lib.processString
+  Lib.reachable
   Lib.readAutomaton
   Lib.readWords
+  Lib.setAcceptingStates
+  Lib.setDetStates
+  Lib.setUniqueStateID
   Lib.toChar
   Lib.tranState
-  Lib.Automaton{Lib.Automaton accept state transitions}
+  Lib.Automaton{Lib.Automaton accept starting state transitions}
 module dependencies:
 package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.0.0*
                       binary-0.8.3.0@binary-0.8.3.0
@@ -36,6 +51,7 @@ package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.0.0*
                       hashable-1.2.4.0@hashable-1.2.4.0-GnltDttmBjG9qGzcjuPOH4
                       hashmap-1.3.1.1@hashmap-1.3.1.1-EsEoa0qXwh9DIEDzax73tQ
                       integer-gmp-1.0.0.1
+                      split-0.2.3.1@split-0.2.3.1-IJKK4pOCYGKud0jZImZke
                       text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ
 orphans: base-4.9.0.0:GHC.Base base-4.9.0.0:GHC.Float
          binary-0.8.3.0@binary-0.8.3.0:Data.Binary.Generic
@@ -61,6 +77,7 @@ family instance modules: base-4.9.0.0:Control.Applicative
                          text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ:Data.Text.Lazy
 import  -/  base-4.9.0.0:Data.Foldable 8aeb682f6c74f97fcf0ace0d608a43ea
 import  -/  base-4.9.0.0:Data.Functor 6fc476505db88d678632a4a838125f13
+import  -/  base-4.9.0.0:Data.List 49b86831b79b49ce5d4d9416ecba61df
 import  -/  base-4.9.0.0:Data.OldList 0058409f994fb13ae0616e3f1e5b4dae
 import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
 import  -/  base-4.9.0.0:GHC.IO.Handle.FD adf0145182d1c6eb38b2b8ce5a292e84
@@ -74,7 +91,95 @@ import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base 7491ab24d955eec2
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c
 import  -/  hashmap-1.3.1.1@hashmap-1.3.1.1-EsEoa0qXwh9DIEDzax73tQ:Data.HashMap a4b722f95b5e2ec0d87fc8dfc88901ba
-e3a2e0a6a0bb92038b4c59f7efbd381d
+import  -/  split-0.2.3.1@split-0.2.3.1-IJKK4pOCYGKud0jZImZke:Data.List.Split 46e8ab9554123893f27696c65d88e63d
+import  -/  split-0.2.3.1@split-0.2.3.1-IJKK4pOCYGKud0jZImZke:Data.List.Split.Internals 91fdfee0190d7e76d57defeef91ab9d3
+8209839fdc1a46399b7cc43c40950532
+  $fEqAutomaton :: GHC.Classes.Eq Lib.Automaton
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Lib.Automaton Lib.$fEqAutomaton_$c== Lib.$fEqAutomaton_$c/= -}
+c172169a7a1a4b44369e6b07acac307c
+  $fEqAutomaton1 ::
+    GHC.Classes.Eq
+      (Data.HashMap.Some
+         (GHC.Base.String, GHC.Types.Char)
+         (Data.Set.Base.Set GHC.Base.String))
+  {- Unfolding: (Data.HashMap.$fEqSome
+                   @ (GHC.Base.String, GHC.Types.Char)
+                   @ (Data.Set.Base.Set GHC.Base.String)
+                   Lib.$fEqAutomaton_$s$fEq(,)
+                   Lib.$fEqAutomaton_$s$fEqSet) -}
+6baab29820c1949530552f68789da076
+  $fEqAutomaton2 :: GHC.Classes.Eq [GHC.Types.Char]
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                GHC.Classes.$fEq[]_$s$fEq[]1 -}
+8209839fdc1a46399b7cc43c40950532
+  $fEqAutomaton_$c/= ::
+    Lib.Automaton -> Lib.Automaton -> GHC.Types.Bool
+  {- Arity: 2,
+     Strictness: <S(SLLL),1*U(1*U,U,1*U,U)><S(SLLL),1*U(1*U,U,1*U,U)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: Lib.Automaton) (b :: Lib.Automaton) ->
+                 case Lib.$fEqAutomaton_$c== a b of wild {
+                   GHC.Types.False -> GHC.Types.True
+                   GHC.Types.True -> GHC.Types.False }) -}
+8209839fdc1a46399b7cc43c40950532
+  $fEqAutomaton_$c== ::
+    Lib.Automaton -> Lib.Automaton -> GHC.Types.Bool
+  {- Arity: 2,
+     Strictness: <S(SLLL),1*U(1*U,U,1*U,U)><S(SLLL),1*U(1*U,U,1*U,U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Lib.Automaton) (w1 :: Lib.Automaton) ->
+                 case w of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 case w1 of ww5 { Lib.Automaton ww6 ww7 ww8 ww9 ->
+                 Lib.$w$c== ww1 ww2 ww3 ww4 ww6 ww7 ww8 ww9 } }) -}
+6ea3f9334b5b410246244afbe602751b
+  $fEqAutomaton_$dEq1 :: GHC.Classes.Eq GHC.Types.Char
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True) GHC.Classes.$fEqChar -}
+b3739d9383989f28af3950f0f35534f4
+  $fEqAutomaton_$s$fEq(,) ::
+    GHC.Classes.Eq ([GHC.Types.Char], GHC.Types.Char)
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ ([GHC.Types.Char], GHC.Types.Char)
+                  (GHC.Classes.$fEq(,)_$c==
+                     @ [GHC.Types.Char]
+                     @ GHC.Types.Char
+                     Lib.$fEqAutomaton2
+                     Lib.$fEqAutomaton_$dEq1)
+                  (GHC.Classes.$fEq(,)_$c/=
+                     @ [GHC.Types.Char]
+                     @ GHC.Types.Char
+                     Lib.$fEqAutomaton2
+                     Lib.$fEqAutomaton_$dEq1) -}
+bb6865655d980d92acd9cf484825fd22
+  $fEqAutomaton_$s$fEqSet ::
+    GHC.Classes.Eq (Data.Set.Base.Set [GHC.Types.Char])
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Data.Set.Base.Set [GHC.Types.Char])
+                  (Data.Set.Base.$fEqSet_$c== @ [GHC.Types.Char] Lib.$fEqAutomaton2)
+                  Lib.$fEqAutomaton_$s$fEqSet_$c/= -}
+d11fc486aa754cd0098c018da27b303d
+  $fEqAutomaton_$s$fEqSet_$c/= ::
+    Data.Set.Base.Set [GHC.Types.Char]
+    -> Data.Set.Base.Set [GHC.Types.Char] -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>,
+     Inline: INLINE (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ (x :: Data.Set.Base.Set [GHC.Types.Char])
+                   (y :: Data.Set.Base.Set [GHC.Types.Char]) ->
+                 GHC.Classes.not
+                   (Data.Set.Base.$fEqSet_$c==
+                      @ [GHC.Types.Char]
+                      Lib.$fEqAutomaton2
+                      x
+                      y)) -}
+8209839fdc1a46399b7cc43c40950532
   $fShowAutomaton :: GHC.Show.Show Lib.Automaton
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -83,170 +188,73 @@ e3a2e0a6a0bb92038b4c59f7efbd381d
                   Lib.$fShowAutomaton_$cshowsPrec
                   Lib.$fShowAutomaton_$cshow
                   Lib.$fShowAutomaton_$cshowList -}
-e3a2e0a6a0bb92038b4c59f7efbd381d
-  $fShowAutomaton1 :: Lib.Automaton -> GHC.Show.ShowS
-  {- Arity: 1,
-     Unfolding: (\ (w :: Lib.Automaton) ->
-                 case w of ww { Lib.Automaton ww1 ww2 ww3 ->
-                 Lib.$w$cshowsPrec 0# ww1 ww2 ww3 }) -}
-daed98e2e73e44f8c18c46e858dc3cdd
-  $fShowAutomaton2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "}"#) -}
-c2ecf7d1a9114dd637107b59b05e1df4
-  $fShowAutomaton3 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "state = "#) -}
-7ef427b0446f98209527baaf0a9b2648
-  $fShowAutomaton4 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "accept = "#) -}
-37ccb2139827f4c90f4ea415a3a9fd99
-  $fShowAutomaton5 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# ", "#) -}
-b9b2f11cc5b640ae6f5ab2458d9b03ea
-  $fShowAutomaton6 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "transitions = "#) -}
-a99dbbac5076570c1c9da94f010e2310
-  $fShowAutomaton7 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "Automaton {"#) -}
-e3a2e0a6a0bb92038b4c59f7efbd381d
-  $fShowAutomaton_$cshow :: Lib.Automaton -> GHC.Base.String
-  {- Arity: 1, Strictness: <S,1*U(1*U,1*U,1*U)>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (x :: Lib.Automaton) ->
-                 Lib.$fShowAutomaton_$cshowsPrec
-                   GHC.Show.shows22
-                   x
-                   (GHC.Types.[] @ GHC.Types.Char)) -}
-e3a2e0a6a0bb92038b4c59f7efbd381d
-  $fShowAutomaton_$cshowList :: [Lib.Automaton] -> GHC.Show.ShowS
+8209839fdc1a46399b7cc43c40950532
+  $fShowAutomaton1 ::
+    Lib.Automaton -> GHC.Base.String -> [GHC.Types.Char]
   {- Arity: 2,
-     Unfolding: (GHC.Show.showList__
-                   @ Lib.Automaton
-                   Lib.$fShowAutomaton1) -}
-e3a2e0a6a0bb92038b4c59f7efbd381d
+     Unfolding: (\ (x :: Lib.Automaton)
+                   (s :: GHC.Base.String)[OneShot] ->
+                 case x of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 GHC.Base.++ @ GHC.Types.Char (Lib.$w$cshow ww1 ww2) s }) -}
+df5a6e9570185933e2ee156c48354f45
+  $fShowAutomaton2 ::
+    (GHC.Base.String, GHC.Types.Char)
+    -> Data.Set.Base.Set GHC.Base.String
+    -> [GHC.Base.String]
+    -> [GHC.Base.String]
+  {- Arity: 3, Strictness: <S,1*U(U,1*U(U))><S,1*U><L,1*U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: (GHC.Base.String, GHC.Types.Char))
+                   (w1 :: Data.Set.Base.Set GHC.Base.String)
+                   (w2 :: [GHC.Base.String]) ->
+                 case w of ww { (,) ww1 ww2 -> Lib.$wlvl ww1 ww2 w1 w2 }) -}
+086a58752bb397401e7294d8afc1617b
+  $fShowAutomaton3 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# ' '#) -}
+908f66fec2532b2429983f75efc4a1ee
+  $fShowAutomaton4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.Base.++
+                   @ GHC.Types.Char
+                   Lib.$fShowAutomaton5
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+31575bdfc2cc973458f5c31fc600d503
+  $fShowAutomaton5 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "<eps>"#) -}
+8209839fdc1a46399b7cc43c40950532
+  $fShowAutomaton_$cshow :: Lib.Automaton -> GHC.Base.String
+  {- Arity: 1, Strictness: <S(SLLL),1*U(1*U,1*U,A,A)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Lib.Automaton) ->
+                 case w of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 Lib.$w$cshow ww1 ww2 }) -}
+8209839fdc1a46399b7cc43c40950532
+  $fShowAutomaton_$cshowList :: [Lib.Automaton] -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: (\ (ls :: [Lib.Automaton]) (s :: GHC.Base.String) ->
+                 GHC.Show.showList__ @ Lib.Automaton Lib.$fShowAutomaton1 ls s) -}
+8209839fdc1a46399b7cc43c40950532
   $fShowAutomaton_$cshowsPrec ::
     GHC.Types.Int -> Lib.Automaton -> GHC.Show.ShowS
-  {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U(1*U,1*U,1*U)>,
-     Inline: INLINE[0],
-     Unfolding: InlineRule (2, True, False)
-                (\ (w :: GHC.Types.Int) (w1 :: Lib.Automaton) ->
-                 case w of ww { GHC.Types.I# ww1 ->
-                 case w1 of ww2 { Lib.Automaton ww3 ww4 ww5 ->
-                 Lib.$w$cshowsPrec ww1 ww3 ww4 ww5 } }) -}
-47b03fbb3e96b9ef9882dd8d0e7a24c2
-  $fShowAutomaton_$s$fShow(,) ::
-    GHC.Show.Show ([GHC.Types.Char], GHC.Types.Char)
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ ([GHC.Types.Char], GHC.Types.Char)
-                  (GHC.Show.$fShow(,)_$cshowsPrec
-                     @ [GHC.Types.Char]
-                     @ GHC.Types.Char
-                     GHC.Show.$fShow[]_$s$fShow[]1
-                     GHC.Show.$fShowChar)
-                  Lib.$fShowAutomaton_$s$fShow(,)_$cshow
-                  Lib.$fShowAutomaton_$s$fShow(,)_$cshowList -}
-39a7e46ab6de44732ef5eb05593bdb15
-  $fShowAutomaton_$s$fShow(,)_$cshow ::
-    ([GHC.Types.Char], GHC.Types.Char) -> GHC.Base.String
-  {- Arity: 1, Strictness: <S,1*U(1*U,U(U))>m2,
-     Unfolding: InlineRule (1, True, False)
-                (\ (x :: ([GHC.Types.Char], GHC.Types.Char)) ->
-                 GHC.Show.$fShow(,)_$cshowsPrec
-                   @ [GHC.Types.Char]
-                   @ GHC.Types.Char
-                   GHC.Show.$fShow[]_$s$fShow[]1
-                   GHC.Show.$fShowChar
-                   GHC.Show.shows22
-                   x
-                   (GHC.Types.[] @ GHC.Types.Char)) -}
-6a701472e963dfec41e1afd8e14d5606
-  $fShowAutomaton_$s$fShow(,)_$cshowList ::
-    [([GHC.Types.Char], GHC.Types.Char)] -> GHC.Show.ShowS
-  {- Arity: 2, Strictness: <S,1*U><L,U>,
-     Unfolding: InlineRule (2, True, False)
-                (\ (eta :: [([GHC.Types.Char], GHC.Types.Char)])
-                   (eta1 :: GHC.Base.String) ->
-                 GHC.Show.showList__
-                   @ ([GHC.Types.Char], GHC.Types.Char)
-                   (GHC.Show.$fShow(,)_$cshowsPrec
-                      @ [GHC.Types.Char]
-                      @ GHC.Types.Char
-                      GHC.Show.$fShow[]_$s$fShow[]1
-                      GHC.Show.$fShowChar
-                      GHC.Show.shows22)
-                   eta
-                   eta1) -}
-12508dbc675e9d52d52b73102d9d391a
-  $fShowAutomaton_$s$fShowSet ::
-    GHC.Show.Show (Data.Set.Base.Set [GHC.Types.Char])
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ (Data.Set.Base.Set [GHC.Types.Char])
-                  (Data.Set.Base.$fShowSet_$cshowsPrec
-                     @ [GHC.Types.Char]
-                     GHC.Show.$fShow[]_$s$fShow[]1)
-                  Lib.$fShowAutomaton_$s$fShowSet_$cshow
-                  Lib.$fShowAutomaton_$s$fShowSet_$cshowList -}
-7752f18022e81b4f2391bcee3da6c37b
-  $fShowAutomaton_$s$fShowSet_$cshow ::
-    Data.Set.Base.Set [GHC.Types.Char] -> GHC.Base.String
-  {- Arity: 1, Strictness: <L,1*U>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (x :: Data.Set.Base.Set [GHC.Types.Char]) ->
+  {- Arity: 3, Strictness: <L,A><S(SLLL),1*U(1*U,1*U,A,A)><L,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (ds :: GHC.Types.Int)
+                   (x :: Lib.Automaton)
+                   (s :: GHC.Base.String) ->
                  GHC.Base.augment
                    @ GHC.Types.Char
                    (\ @ b
                       (c :: GHC.Types.Char -> b -> b)[OneShot]
                       (n :: b)[OneShot] ->
-                    GHC.Base.foldr @ GHC.Types.Char @ b c n Data.Set.Base.$fShowSet1)
-                   (GHC.Show.shows_$s$cshowList
-                      (GHC.Base.build
-                         @ [GHC.Types.Char]
-                         (\ @ b
-                            (c :: [GHC.Types.Char] -> b -> b)[OneShot]
-                            (n :: b)[OneShot] ->
-                          Data.Set.Base.foldrFB @ [GHC.Types.Char] @ b c n x))
-                      (GHC.Types.[] @ GHC.Types.Char))) -}
-a4ce35c086b6cc40a25c36402ecf2e50
-  $fShowAutomaton_$s$fShowSet_$cshowList ::
-    [Data.Set.Base.Set [GHC.Types.Char]] -> GHC.Show.ShowS
-  {- Arity: 2, Strictness: <S,1*U><L,U>,
-     Unfolding: InlineRule (2, True, False)
-                (\ (ls :: [Data.Set.Base.Set [GHC.Types.Char]])
-                   (s :: GHC.Base.String) ->
-                 GHC.Show.showList__
-                   @ (Data.Set.Base.Set [GHC.Types.Char])
-                   (Data.Set.Base.$fShowSet_$cshowsPrec
-                      @ [GHC.Types.Char]
-                      GHC.Show.$fShow[]_$s$fShow[]1
-                      GHC.Show.shows22)
-                   ls
+                    GHC.Base.foldr
+                      @ GHC.Types.Char
+                      @ b
+                      c
+                      n
+                      (Lib.$fShowAutomaton_$cshow x))
                    s) -}
-db966d116c516b306c11be8fc74cdebd
-  $s$fEq(,) :: GHC.Classes.Eq ([GHC.Types.Char], GHC.Types.Char)
-  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ ([GHC.Types.Char], GHC.Types.Char)
-                  (GHC.Classes.$fEq(,)_$c==
-                     @ [GHC.Types.Char]
-                     @ GHC.Types.Char
-                     Lib.$s$fEq(,)_$dEq
-                     Lib.$s$fEq(,)_$dEq1)
-                  (GHC.Classes.$fEq(,)_$c/=
-                     @ [GHC.Types.Char]
-                     @ GHC.Types.Char
-                     Lib.$s$fEq(,)_$dEq
-                     Lib.$s$fEq(,)_$dEq1) -}
-9af47468567c7a207e9db6d8e89bc4f4
-  $s$fEq(,)_$dEq :: GHC.Classes.Eq [GHC.Types.Char]
-  {- Strictness: m,
-     Unfolding: InlineRule (0, True, True)
-                GHC.Classes.$fEq[]_$s$fEq[]1 -}
-eea2e977e84cc96c0fe111c75701c91a
-  $s$fEq(,)_$dEq1 :: GHC.Classes.Eq GHC.Types.Char
-  {- Strictness: m,
-     Unfolding: InlineRule (0, True, True) GHC.Classes.$fEqChar -}
-7f087a604ad4d9ef74029349011f9f1f
+4b1502aca731daea278cb62ab8c99210
   $s$fHashable(,) ::
     Data.Hashable.Class.Hashable ([GHC.Types.Char], GHC.Types.Char)
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -254,7 +262,7 @@ eea2e977e84cc96c0fe111c75701c91a
                   @ ([GHC.Types.Char], GHC.Types.Char)
                   Lib.$s$fHashable(,)_$s$fHashable(,)_$chashWithSalt
                   Lib.$s$fHashable(,)_$s$fHashable(,)_$chash -}
-4fff03ef1efb7873df10ea8ac39233a2
+b0a8ac9e50170e39b89289fc577b2b17
   $s$fHashable(,)_$s$fHashable(,)_$chash ::
     ([GHC.Types.Char], GHC.Types.Char) -> GHC.Types.Int
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SS(S)),1*U(1*U,1*U(U))>m,
@@ -264,7 +272,7 @@ eea2e977e84cc96c0fe111c75701c91a
                  Data.Hashable.Class.$fHashableChar_$chashWithSalt
                    (Data.Hashable.Class.$fHashable[]_$s$chash a4)
                    a5 }) -}
-d4fe735584b629b33a4b3abc931e61b5
+867faa347a594bfc84c63dd59edb8c0d
   $s$fHashable(,)_$s$fHashable(,)_$chashWithSalt ::
     GHC.Types.Int
     -> ([GHC.Types.Char], GHC.Types.Char) -> GHC.Types.Int
@@ -277,7 +285,7 @@ d4fe735584b629b33a4b3abc931e61b5
                  Data.Hashable.Class.$fHashableChar_$chashWithSalt
                    (Data.Hashable.Class.$fHashableNonEmpty_$s$chashWithSalt s a4)
                    a5 }) -}
-446b14cd2c182102f784e5a6faae3a6e
+d3d14cfee45f4ec04869af1f78f55226
   $s$fOrd(,) :: GHC.Classes.Ord ([GHC.Types.Char], GHC.Types.Char)
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
@@ -318,23 +326,79 @@ d4fe735584b629b33a4b3abc931e61b5
                      @ GHC.Types.Char
                      Lib.$s$fOrd(,)1
                      GHC.Classes.$fOrdChar) -}
-9f2721582890c06183d6beaf9e1c64b1
+053e650dd4e53927a235de8a554cc8c7
   $s$fOrd(,)1 :: GHC.Classes.Ord [GHC.Types.Char]
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 GHC.Classes.$fOrd[]_$s$fOrd[]1 -}
-44b12a547ec921340391fa6196420ffe
+503194d633f495430e01c8d92cfd50bd
   $s$fOrd(,)_$s$fOrd(,)_$cp1Ord ::
     GHC.Classes.Eq ([GHC.Types.Char], GHC.Types.Char)
   {- Strictness: m,
-     Unfolding: InlineRule (0, True, True) Lib.$s$fEq(,) -}
-13e0b5bb2a8ab75a83263a12fc47e469
-  $sinsert_$sgo5 ::
-    GHC.Base.String
-    -> Data.Set.Base.Set GHC.Base.String
-    -> Data.Set.Base.Set GHC.Base.String
+     Unfolding: InlineRule (0, True, True)
+                Lib.$fEqAutomaton_$s$fEq(,) -}
+569e643906520b4918c0e014e9a14f64
+  $sfromList ::
+    [[GHC.Types.Char]] -> Data.Set.Base.Set [GHC.Types.Char]
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ (ds :: [[GHC.Types.Char]]) ->
+                 case ds of wild {
+                   [] -> Data.Set.Base.Tip @ [GHC.Types.Char]
+                   : x ds1
+                   -> case ds1 of wild1 {
+                        []
+                        -> case x of dt { DEFAULT ->
+                           Data.Set.Base.Bin
+                             @ [GHC.Types.Char]
+                             1#
+                             dt
+                             (Data.Set.Base.Tip @ [GHC.Types.Char])
+                             (Data.Set.Base.Tip @ [GHC.Types.Char]) }
+                        : ipv ipv1
+                        -> case GHC.Classes.$fOrd[]_$s$ccompare1 x ipv of wild2 {
+                             DEFAULT
+                             -> case x of dt { DEFAULT ->
+                                Lib.$sfromList_go5
+                                  (Data.Set.Base.Bin
+                                     @ [GHC.Types.Char]
+                                     1#
+                                     dt
+                                     (Data.Set.Base.Tip @ [GHC.Types.Char])
+                                     (Data.Set.Base.Tip @ [GHC.Types.Char]))
+                                  wild1 }
+                             GHC.Types.LT
+                             -> case x of dt { DEFAULT ->
+                                Lib.$wgo5
+                                  1#
+                                  (Data.Set.Base.Bin
+                                     @ [GHC.Types.Char]
+                                     1#
+                                     dt
+                                     (Data.Set.Base.Tip @ [GHC.Types.Char])
+                                     (Data.Set.Base.Tip @ [GHC.Types.Char]))
+                                  wild1 } } } }) -}
+b1e7b06364a1a755042ccdc9d820541d
+  $sfromList_go5 ::
+    Data.Set.Base.Set [GHC.Types.Char]
+    -> [[GHC.Types.Char]] -> Data.Set.Base.Set [GHC.Types.Char]
   {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
-63b22e7a7e56c9f75da2f0ae0bc55286
+0e16a6d4acff8123dc50b63776adbf9e
+  $sinsert_$sgo1 ::
+    GHC.Types.Char
+    -> Data.Set.Base.Set GHC.Types.Char
+    -> Data.Set.Base.Set GHC.Types.Char
+  {- Arity: 2, Strictness: <S,1*U(U)><S,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Char)
+                   (w1 :: Data.Set.Base.Set GHC.Types.Char) ->
+                 case w of ww { GHC.Types.C# ww1 -> Lib.$w$sgo5 ww1 w1 }) -}
+091c67e5d83af4c58759173d1042b858
+  $sinsert_$sgo5 ::
+    [GHC.Types.Char]
+    -> Data.Set.Base.Set [GHC.Types.Char]
+    -> Data.Set.Base.Set [GHC.Types.Char]
+  {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
+00fa808566a1640b99403940dfa2e32a
   $sintersection1 ::
     Data.Set.Base.Set GHC.Base.String
     -> Data.Set.Base.Set GHC.Base.String
@@ -361,197 +425,574 @@ d4fe735584b629b33a4b3abc931e61b5
                              GHC.Classes.$fOrd[]_$s$fOrd[]1
                         Data.Set.Base.Tip -> Data.Set.Base.Tip @ GHC.Base.String }
                    Data.Set.Base.Tip -> Data.Set.Base.Tip @ GHC.Base.String }) -}
-1d0c5f242f47557943c212de5dd10a6d
+0ed56710ab69375bf02ea1c0787a2f51
+  $smember_go5 ::
+    [GHC.Types.Char]
+    -> Data.Set.Base.Set [GHC.Types.Char] -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U> -}
+51efa04f6aafa6577324cc5acc06d3a2
+  $sunion1 ::
+    Data.Set.Base.Set GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+  {- Arity: 2, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (ds :: Data.Set.Base.Set GHC.Base.String)
+                   (t2 :: Data.Set.Base.Set GHC.Base.String) ->
+                 case ds of wild {
+                   Data.Set.Base.Bin ipv ipv1 ipv2 ipv3
+                   -> case t2 of wild1 {
+                        Data.Set.Base.Bin ipv4 ipv5 ipv6 ipv7
+                        -> Data.Set.Base.union_$shedgeUnion
+                             @ GHC.Base.String
+                             ipv4
+                             ipv5
+                             ipv6
+                             ipv7
+                             ipv
+                             ipv1
+                             ipv2
+                             ipv3
+                             (Data.Set.Base.NothingS @ GHC.Base.String)
+                             (Data.Set.Base.NothingS @ GHC.Base.String)
+                             GHC.Classes.$fOrd[]_$s$fOrd[]1
+                        Data.Set.Base.Tip -> wild }
+                   Data.Set.Base.Tip -> t2 }) -}
+af7bfc6e87e333c7f45a198f1455fb19
   $tc'Automaton :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   8355548237412804656##
-                   7972258479730656337##
+                   15777799671074095356##
+                   16730526417073981104##
                    Lib.$trModule
                    Lib.$tc'Automaton1) -}
-69ffd2ff419f0735114e02d265e507d0
+f5c107c663a0029514065156dd66cd8f
   $tc'Automaton1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'Automaton"#) -}
-aba854f4d672dcbabe278c5c54c31650
+f1e2d6f10b7dd0a74d32bd8c3c04b96a
   $tcAutomaton :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   2625856767125604022##
-                   5100143325158487415##
+                   6746101439490874996##
+                   3868393679971117607##
                    Lib.$trModule
                    Lib.$tcAutomaton1) -}
-bb4937dd6dbe0f8b3d909e86b2ecc169
+1007a3ee6fbd1d10282b3e080ce27b05
   $tcAutomaton1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "Automaton"#) -}
-9e9bbe8aef992d4f3196f6fea21b1852
+f4fd0f4c93f7780376b0faa247eb15d6
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.Module Lib.$trModule2 Lib.$trModule1) -}
-5d3f858fa280ce235fa2c89af379b2bf
+b9f8b501f4c94b5ffc76c8dfa787dd85
   $trModule1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "Lib"#) -}
-9cd5f2017374138160185456dcc6c02b
+48afa151c73f773c7a702f6f94e75f36
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
-                   "Automaton-0.1.0.0-6bZeNUyyycTD0CxAwaZN0W"#) -}
-31c339e5bdb3ec718632cd85df0bbb6b
-  $w$cshowsPrec ::
-    GHC.Prim.Int#
+                   "Automaton-0.1.0.0-A8Lue7XUpdkBOExGdwpYs1"#) -}
+6310b4479a816f76a697590843a3086c
+  $w$c== ::
+    Data.HashMap.Map
+      (GHC.Base.String, GHC.Types.Char)
+      (Data.Set.Base.Set GHC.Base.String)
+    -> Data.Set.Base.Set GHC.Base.String
+    -> GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
     -> Data.HashMap.Map
          (GHC.Base.String, GHC.Types.Char)
          (Data.Set.Base.Set GHC.Base.String)
     -> Data.Set.Base.Set GHC.Base.String
+    -> GHC.Base.String
     -> Data.Set.Base.Set GHC.Base.String
-    -> GHC.Show.ShowS
-  {- Arity: 4, Strictness: <S,U><L,1*U><L,1*U><L,1*U>, Inline: [0],
-     Unfolding: (\ (ww :: GHC.Prim.Int#)
-                   (ww1 :: Data.HashMap.Map
+    -> GHC.Types.Bool
+  {- Arity: 8,
+     Strictness: <S,1*U><L,U><L,1*U><L,U><S,1*U><L,U><L,1*U><L,U>,
+     Inline: [0],
+     Unfolding: (\ (ww :: Data.HashMap.Map
+                            (GHC.Base.String, GHC.Types.Char)
+                            (Data.Set.Base.Set GHC.Base.String))
+                   (ww1 :: Data.Set.Base.Set GHC.Base.String)
+                   (ww2 :: GHC.Base.String)
+                   (ww3 :: Data.Set.Base.Set GHC.Base.String)
+                   (ww4 :: Data.HashMap.Map
                              (GHC.Base.String, GHC.Types.Char)
                              (Data.Set.Base.Set GHC.Base.String))
-                   (ww2 :: Data.Set.Base.Set GHC.Base.String)
+                   (ww5 :: Data.Set.Base.Set GHC.Base.String)
+                   (ww6 :: GHC.Base.String)
+                   (ww7 :: Data.Set.Base.Set GHC.Base.String) ->
+                 case Data.IntMap.Base.equal
+                        @ (Data.HashMap.Some
+                             (GHC.Base.String, GHC.Types.Char)
+                             (Data.Set.Base.Set GHC.Base.String))
+                        Lib.$fEqAutomaton1
+                        ww
+                          `cast`
+                        (Data.HashMap.N:Map[0]
+                             <(GHC.Base.String, GHC.Types.Char)>_N
+                             <Data.Set.Base.Set GHC.Base.String>_R)
+                        ww4
+                          `cast`
+                        (Data.HashMap.N:Map[0]
+                             <(GHC.Base.String, GHC.Types.Char)>_N
+                             <Data.Set.Base.Set GHC.Base.String>_R) of wild {
+                   GHC.Types.False -> GHC.Types.False
+                   GHC.Types.True
+                   -> case Data.Set.Base.$fEqSet_$c==
+                             @ [GHC.Types.Char]
+                             GHC.Classes.$fEq[]_$s$fEq[]1
+                             ww1
+                             ww5 of wild1 {
+                        GHC.Types.False -> GHC.Types.False
+                        GHC.Types.True
+                        -> case GHC.Base.eqString ww2 ww6 of wild2 {
+                             GHC.Types.False -> GHC.Types.False
+                             GHC.Types.True
+                             -> Data.Set.Base.$fEqSet_$c==
+                                  @ [GHC.Types.Char]
+                                  GHC.Classes.$fEq[]_$s$fEq[]1
+                                  ww3
+                                  ww7 } } }) -}
+e4841959fe672ce8c2d57e7fbe03f508
+  $w$cshow ::
+    Data.HashMap.Map
+      (GHC.Base.String, GHC.Types.Char)
+      (Data.Set.Base.Set GHC.Base.String)
+    -> Data.Set.Base.Set GHC.Base.String -> GHC.Base.String
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>, Inline: [0],
+     Unfolding: (\ (ww :: Data.HashMap.Map
+                            (GHC.Base.String, GHC.Types.Char)
+                            (Data.Set.Base.Set GHC.Base.String))
+                   (ww1 :: Data.Set.Base.Set GHC.Base.String) ->
+                 Data.OldList.unlines
+                   (GHC.Base.++
+                      @ [GHC.Types.Char]
+                      (Data.OldList.sortBy
+                         @ GHC.Base.String
+                         GHC.Classes.$fOrd[]_$s$ccompare1
+                         (Data.HashMap.foldWithKey
+                            @ (GHC.Base.String, GHC.Types.Char)
+                            @ (Data.Set.Base.Set GHC.Base.String)
+                            @ [GHC.Base.String]
+                            Lib.$fShowAutomaton2
+                            (GHC.Types.[] @ GHC.Base.String)
+                            ww))
+                      (Data.Set.Base.$fDataSet1
+                         @ [GHC.Types.Char]
+                         (GHC.Types.[] @ [GHC.Types.Char])
+                         ww1))) -}
+9f908f076a835bd363d201ede69d9325
+  $w$sgo5 ::
+    GHC.Prim.Char#
+    -> Data.Set.Base.Set GHC.Types.Char
+    -> Data.Set.Base.Set GHC.Types.Char
+  {- Arity: 2, Strictness: <L,U><S,1*U>, Inline: [0] -}
+6fa2057b1572fcfc7c737d9c7ac2af31
+  $wdeterminization ::
+    Lib.Automaton
+    -> Data.HashMap.Map
+         (GHC.Base.String, GHC.Types.Char)
+         (Data.Set.Base.Set GHC.Base.String)
+    -> Data.Set.Base.Set GHC.Base.String
+    -> GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+    -> (# Data.HashMap.Map
+            (GHC.Base.String, GHC.Types.Char)
+            (Data.Set.Base.Set GHC.Base.String),
+          Data.Set.Base.Set GHC.Base.String, GHC.Base.String,
+          Data.Set.Base.Set GHC.Base.String #)
+  {- Arity: 5, Strictness: <L,U(U,U,A,A)><L,U><L,U><L,U><S,U>,
+     Inline: [0] -}
+a9b56b8f95ca89c5c6b31b7969762d0c
+  $wdeterminize ::
+    Lib.Automaton
+    -> (# Data.HashMap.Map
+            (GHC.Base.String, GHC.Types.Char)
+            (Data.Set.Base.Set GHC.Base.String),
+          Data.Set.Base.Set GHC.Base.String, GHC.Base.String,
+          Data.Set.Base.Set GHC.Base.String #)
+  {- Arity: 1, Strictness: <L,U(U,U,A,A)>, Inline: [0],
+     Unfolding: (\ (w :: Lib.Automaton) ->
+                 case Lib.$wdeterminization
+                        w
+                        (Data.IntMap.Base.Nil
+                           @ (Data.HashMap.Some
+                                (GHC.Base.String, GHC.Types.Char)
+                                (Data.Set.Base.Set GHC.Base.String)))
+                          `cast`
+                        (Sym (Data.HashMap.N:Map[0]
+                                  <(GHC.Base.String, GHC.Types.Char)>_N
+                                  <Data.Set.Base.Set GHC.Base.String>_R))
+                        (Data.Set.Base.Tip @ GHC.Base.String)
+                        Lib.determinize_dt
+                        Lib.determinize10 of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
+                 Lib.$wsetUniqueStateID
+                   (Lib.determinize1 ww1)
+                     `cast`
+                   (Sym (Data.HashMap.N:Map[0]
+                             <(GHC.Base.String, GHC.Types.Char)>_N
+                             <Data.Set.Base.Set [GHC.Types.Char]>_R))
+                   ww2
+                   ww3
+                   ww4 }) -}
+5982d9efe7702135a857be1816b9c646
+  $wdeterminizeTransitions ::
+    Lib.Automaton
+    -> Data.HashMap.Map
+         (GHC.Base.String, GHC.Types.Char)
+         (Data.Set.Base.Set GHC.Base.String)
+    -> Data.Set.Base.Set GHC.Base.String
+    -> GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+    -> Lib.Automaton
+  {- Arity: 5, Strictness: <L,1*U(1*U,A,A,A)><L,U><L,U><L,U><S,U>,
+     Inline: [0],
+     Unfolding: (\ (w :: Lib.Automaton)
+                   (ww :: Data.HashMap.Map
+                            (GHC.Base.String, GHC.Types.Char)
+                            (Data.Set.Base.Set GHC.Base.String))
+                   (ww1 :: Data.Set.Base.Set GHC.Base.String)
+                   (ww2 :: GHC.Base.String)
                    (ww3 :: Data.Set.Base.Set GHC.Base.String) ->
                  let {
-                   f :: GHC.Base.String -> GHC.Base.String
-                   = Data.HashMap.$w$cshowsPrec
-                       @ (GHC.Base.String, GHC.Types.Char)
-                       @ (Data.Set.Base.Set GHC.Base.String)
-                       Lib.$fShowAutomaton_$s$fShow(,)
-                       Lib.$fShowAutomaton_$s$fShowSet
-                       0#
-                       ww1
+                   lvl12 :: Data.HashMap.Map
+                              (GHC.Base.String, GHC.Types.Char)
+                              (Data.Set.Base.Set GHC.Base.String)
+                   = case w of wild { Lib.Automaton ds ds1 ds2 ds3 -> ds }
                  } in
-                 let {
-                   f1 :: GHC.Base.String -> GHC.Base.String
-                   = Data.Set.Base.$w$cshowsPrec
-                       @ [GHC.Types.Char]
-                       GHC.Show.$fShow[]_$s$fShow[]1
-                       0#
-                       ww2
+                 letrec {
+                   go5 :: Lib.Automaton
+                          -> Data.Set.Base.Set [GHC.Types.Char] -> Lib.Automaton
+                     {- Arity: 2, Strictness: <L,1*U(U,U,U,U)><S,1*U> -}
+                   = \ (z' :: Lib.Automaton)
+                       (ds :: Data.Set.Base.Set [GHC.Types.Char]) ->
+                     case ds of wild {
+                       Data.Set.Base.Bin dt x l r
+                       -> go5
+                            (let {
+                               lvl13 :: Data.Set.Base.Set [GHC.Types.Char]
+                               = Lib.$sfromList (Lib.determinizeTransitions1 x)
+                             } in
+                             Data.HashMap.foldWithKey
+                               @ ([GHC.Types.Char], GHC.Types.Char)
+                               @ (Data.Set.Base.Set GHC.Base.String)
+                               @ Lib.Automaton
+                               (\ (ds1 :: ([GHC.Types.Char], GHC.Types.Char))
+                                  (s2 :: Data.Set.Base.Set GHC.Base.String)[OneShot]
+                                  (a :: Lib.Automaton)[OneShot] ->
+                                case ds1 of wild1 { (,) s v ->
+                                case Lib.$smember_go5 s lvl13 of wild2 {
+                                  GHC.Types.False -> a
+                                  GHC.Types.True
+                                  -> case a of wild3 { Lib.Automaton ds2 ds3 ds4 ds5 ->
+                                     Lib.Automaton
+                                       (Data.HashMap.fromListWith1
+                                          @ ([GHC.Types.Char], GHC.Types.Char)
+                                          @ (Data.Set.Base.Set GHC.Base.String)
+                                          Lib.$s$fHashable(,)
+                                          Lib.$s$fOrd(,)
+                                          Lib.$sunion1
+                                          (x, v)
+                                          s2
+                                          ds2)
+                                         `cast`
+                                       (Sym (Data.HashMap.N:Map[0]
+                                                 <([GHC.Types.Char], GHC.Types.Char)>_N
+                                                 <Data.Set.Base.Set GHC.Base.String>_R))
+                                       ds3
+                                       ds4
+                                       ds5 } } })
+                               (go5 z' r)
+                               lvl12)
+                            l
+                       Data.Set.Base.Tip -> z' }
                  } in
-                 let {
-                   f2 :: GHC.Base.String -> GHC.Base.String
-                   = Data.Set.Base.$w$cshowsPrec
-                       @ [GHC.Types.Char]
-                       GHC.Show.$fShow[]_$s$fShow[]1
-                       0#
-                       ww3
-                 } in
-                 let {
-                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,1*U> -}
-                   = \ (x :: GHC.Base.String) ->
-                     GHC.Base.++
-                       @ GHC.Types.Char
-                       Lib.$fShowAutomaton7
-                       (GHC.Base.++
-                          @ GHC.Types.Char
-                          Lib.$fShowAutomaton6
-                          (f (GHC.Base.++
-                                @ GHC.Types.Char
-                                Lib.$fShowAutomaton5
-                                (GHC.Base.++
-                                   @ GHC.Types.Char
-                                   Lib.$fShowAutomaton4
-                                   (f1
-                                      (GHC.Base.++
-                                         @ GHC.Types.Char
-                                         Lib.$fShowAutomaton5
-                                         (GHC.Base.++
-                                            @ GHC.Types.Char
-                                            Lib.$fShowAutomaton3
-                                            (f2
-                                               (GHC.Base.++
-                                                  @ GHC.Types.Char
-                                                  Lib.$fShowAutomaton2
-                                                  x)))))))))
-                 } in
-                 case GHC.Prim.tagToEnum#
-                        @ GHC.Types.Bool
-                        (GHC.Prim.>=# ww 11#) of wild {
-                   GHC.Types.False -> p
-                   GHC.Types.True
-                   -> \ (x :: GHC.Base.String) ->
-                      GHC.Types.:
-                        @ GHC.Types.Char
-                        GHC.Show.shows9
-                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 x)) }) -}
-34cd2851d5d3a6c9ad8a930c4dba6428
+                 go5 (Lib.Automaton ww ww1 ww2 ww3) ww3) -}
+22c84d87184d46e52bae5d1dc2b19ee9
+  $wextractStates ::
+    GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+  {- Arity: 3, Strictness: <S,1*U><S,1*U><S,1*U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Base.String)
+                   (w :: Data.Set.Base.Set GHC.Base.String)
+                   (w1 :: Data.Set.Base.Set GHC.Base.String) ->
+                 case w of wild {
+                   Data.Set.Base.Bin ipv ipv1 ipv2 ipv3
+                   -> case w1 of wild1 {
+                        Data.Set.Base.Bin ipv4 ipv5 ipv6 ipv7
+                        -> Lib.$sinsert_$sgo5
+                             ww
+                             (Data.Set.Base.union_$shedgeUnion
+                                @ GHC.Base.String
+                                ipv4
+                                ipv5
+                                ipv6
+                                ipv7
+                                ipv
+                                ipv1
+                                ipv2
+                                ipv3
+                                (Data.Set.Base.NothingS @ GHC.Base.String)
+                                (Data.Set.Base.NothingS @ GHC.Base.String)
+                                GHC.Classes.$fOrd[]_$s$fOrd[]1)
+                        Data.Set.Base.Tip -> Lib.$sinsert_$sgo5 ww wild }
+                   Data.Set.Base.Tip -> Lib.$sinsert_$sgo5 ww w1 }) -}
+2e2f002c36ac8fcc4cd32cffcc328240
+  $wgenerateNamesMap ::
+    Data.HashMap.Map
+      (GHC.Base.String, GHC.Types.Char)
+      (Data.Set.Base.Set GHC.Base.String)
+    -> [(GHC.Base.String, GHC.Base.String)]
+  {- Arity: 1, Strictness: <S,1*U>, Inline: [0],
+     Unfolding: (\ (ww :: Data.HashMap.Map
+                            (GHC.Base.String, GHC.Types.Char)
+                            (Data.Set.Base.Set GHC.Base.String)) ->
+                 Lib.determinize_go5
+                   Lib.determinize9
+                   (Data.HashMap.foldWithKey
+                      @ (GHC.Base.String, GHC.Types.Char)
+                      @ (Data.Set.Base.Set GHC.Base.String)
+                      @ (Data.Set.Base.Set GHC.Base.String)
+                      Lib.determinize8
+                      (Data.Set.Base.Tip @ GHC.Base.String)
+                      ww)
+                   Lib.determinize5) -}
+d9426568597c5f06044ebecaf7d8436d
   $wgo ::
     [GHC.Types.Char]
     -> Data.HashMap.Map
          (GHC.Base.String, GHC.Types.Char)
          (Data.Set.Base.Set GHC.Base.String)
     -> Data.Set.Base.Set GHC.Base.String
+    -> GHC.Base.String
     -> Data.Set.Base.Set GHC.Base.String
     -> (# Data.HashMap.Map
             (GHC.Base.String, GHC.Types.Char)
             (Data.Set.Base.Set GHC.Base.String),
-          Data.Set.Base.Set GHC.Base.String,
+          Data.Set.Base.Set GHC.Base.String, GHC.Base.String,
           Data.Set.Base.Set GHC.Base.String #)
-  {- Arity: 4, Strictness: <S,1*U><L,U><L,U><L,U>, Inline: [0] -}
-a008dfaf310acacc234e39386a559115
+  {- Arity: 5, Strictness: <S,1*U><L,U><L,U><L,U><L,U>,
+     Inline: [0] -}
+2b71e4302be2f1470d1392c0cd0006b4
   $wgo1 ::
     [[GHC.Types.Char]]
     -> Data.HashMap.Map
          (GHC.Base.String, GHC.Types.Char)
          (Data.Set.Base.Set GHC.Base.String)
     -> Data.Set.Base.Set GHC.Base.String
+    -> GHC.Base.String
     -> Data.Set.Base.Set GHC.Base.String
     -> (# Data.HashMap.Map
             (GHC.Base.String, GHC.Types.Char)
             (Data.Set.Base.Set GHC.Base.String),
-          Data.Set.Base.Set GHC.Base.String,
+          Data.Set.Base.Set GHC.Base.String, GHC.Base.String,
           Data.Set.Base.Set GHC.Base.String #)
-  {- Arity: 4, Strictness: <S,1*U><L,U><L,U><L,U>, Inline: [0] -}
-3d42233c5d5dad06707ae6b07d504159
+  {- Arity: 5, Strictness: <S,1*U><L,U><L,U><L,U><L,U>,
+     Inline: [0] -}
+5a1546f61369d9c8d118368f1d112a7f
+  $wgo5 ::
+    GHC.Prim.Int#
+    -> Data.Set.Base.Set [GHC.Types.Char]
+    -> [[GHC.Types.Char]]
+    -> Data.Set.Base.Set [GHC.Types.Char]
+  {- Arity: 3, Strictness: <L,U><S,1*U><S,1*U>, Inline: [0] -}
+08accb4e66730f69f5c14ac9aecdf6fe
   $wisAccepted ::
     Data.HashMap.Map
       (GHC.Base.String, GHC.Types.Char)
       (Data.Set.Base.Set GHC.Base.String)
     -> Data.Set.Base.Set GHC.Base.String
+    -> GHC.Base.String
     -> Data.Set.Base.Set GHC.Base.String
     -> GHC.Types.Bool
-  {- Arity: 3, Strictness: <L,U><S,U><L,U>, Inline: [0],
+  {- Arity: 4, Strictness: <L,U><S,U><L,U><L,U>, Inline: [0],
      Unfolding: (\ (ww :: Data.HashMap.Map
                             (GHC.Base.String, GHC.Types.Char)
                             (Data.Set.Base.Set GHC.Base.String))
                    (ww1 :: Data.Set.Base.Set GHC.Base.String)
-                   (ww2 :: Data.Set.Base.Set GHC.Base.String) ->
-                 case Lib.$sintersection1 ww1 ww2 of wild {
+                   (ww2 :: GHC.Base.String)
+                   (ww3 :: Data.Set.Base.Set GHC.Base.String) ->
+                 case Lib.$sintersection1 ww1 ww3 of wild {
                    Data.Set.Base.Bin dt ds1 ds2 ds3 -> GHC.Types.True
                    Data.Set.Base.Tip
                    -> case Lib.$wprocessChar
-                             Lib.toChar2
+                             Lib.addEpsilon1
                              ww
                              ww1
-                             ww2 of ww3 { (#,,#) ww4 ww5 ww6 ->
-                      case Lib.$sintersection1 ww5 ww6 of wild1 {
+                             ww2
+                             ww3 of ww4 { (#,,,#) ww5 ww6 ww7 ww8 ->
+                      case Lib.$sintersection1 ww6 ww8 of wild1 {
                         Data.Set.Base.Bin dt ds1 ds2 ds3 -> GHC.Types.True
                         Data.Set.Base.Tip -> GHC.Types.False } } }) -}
-151cd6c23424da29f78d1e7e5a6b9078
+fab83c953f9d044d7a5232b88b5f2276
+  $wlvl ::
+    GHC.Base.String
+    -> GHC.Types.Char
+    -> Data.Set.Base.Set GHC.Base.String
+    -> [GHC.Base.String]
+    -> [GHC.Base.String]
+  {- Arity: 4, Strictness: <L,U><L,1*U(U)><S,1*U><L,1*U>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Base.String)
+                   (ww1 :: GHC.Types.Char)
+                   (w :: Data.Set.Base.Set GHC.Base.String)
+                   (w1 :: [GHC.Base.String]) ->
+                 let {
+                   lvl12 :: [GHC.Types.Char]
+                   = case ww1 of wild { GHC.Types.C# x ->
+                     case x of wild1 {
+                       DEFAULT
+                       -> GHC.Base.++
+                            @ GHC.Types.Char
+                            (GHC.Types.: @ GHC.Types.Char wild (GHC.Types.[] @ GHC.Types.Char))
+                            (GHC.Types.[] @ GHC.Types.Char)
+                       '\8714'# -> Lib.$fShowAutomaton4 } }
+                 } in
+                 let {
+                   lvl13 :: GHC.Base.String
+                   = GHC.Types.: @ GHC.Types.Char Lib.$fShowAutomaton3 lvl12
+                 } in
+                 letrec {
+                   go5 :: [GHC.Base.String]
+                          -> Data.Set.Base.Set GHC.Base.String -> [GHC.Base.String]
+                     {- Arity: 2, Strictness: <L,1*U><S,1*U> -}
+                   = \ (z' :: [GHC.Base.String])
+                       (ds :: Data.Set.Base.Set GHC.Base.String) ->
+                     case ds of wild {
+                       Data.Set.Base.Bin dt x l r
+                       -> go5
+                            (GHC.Types.:
+                               @ GHC.Base.String
+                               (GHC.Base.++
+                                  @ GHC.Types.Char
+                                  ww
+                                  (GHC.Types.:
+                                     @ GHC.Types.Char
+                                     Lib.$fShowAutomaton3
+                                     (GHC.Base.++ @ GHC.Types.Char x lvl13)))
+                               (go5 z' r))
+                            l
+                       Data.Set.Base.Tip -> z' }
+                 } in
+                 go5 w1 w) -}
+ef0e927898da12fc219ac58e74f85c28
+  $wprependToState ::
+    GHC.Types.Char
+    -> Data.HashMap.Map
+         (GHC.Base.String, GHC.Types.Char)
+         (Data.Set.Base.Set GHC.Base.String)
+    -> Data.Set.Base.Set GHC.Base.String
+    -> GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+    -> (# Data.HashMap.Map
+            (GHC.Base.String, GHC.Types.Char)
+            (Data.Set.Base.Set GHC.Base.String),
+          Data.Set.Base.Set GHC.Base.String, GHC.Base.String,
+          Data.Set.Base.Set GHC.Base.String #)
+  {- Arity: 5, Strictness: <L,U><L,1*U><L,1*U><L,U><L,U>,
+     Inline: [0],
+     Unfolding: (\ (w :: GHC.Types.Char)
+                   (ww :: Data.HashMap.Map
+                            (GHC.Base.String, GHC.Types.Char)
+                            (Data.Set.Base.Set GHC.Base.String))
+                   (ww1 :: Data.Set.Base.Set GHC.Base.String)
+                   (ww2 :: GHC.Base.String)
+                   (ww3 :: Data.Set.Base.Set GHC.Base.String) ->
+                 (# letrec {
+                      go5 :: [GHC.Base.String]
+                             -> Data.Set.Base.Set [GHC.Types.Char] -> [GHC.Base.String]
+                        {- Arity: 2, Strictness: <L,1*U><S,1*U> -}
+                      = \ (z' :: [GHC.Base.String])
+                          (ds :: Data.Set.Base.Set [GHC.Types.Char]) ->
+                        case ds of wild {
+                          Data.Set.Base.Bin dt x l r
+                          -> go5
+                               (GHC.Types.:
+                                  @ GHC.Base.String
+                                  (GHC.Types.: @ GHC.Types.Char w x)
+                                  (go5 z' r))
+                               l
+                          Data.Set.Base.Tip -> z' }
+                    } in
+                    Data.HashMap.foldWithKey
+                      @ ([GHC.Types.Char], GHC.Types.Char)
+                      @ (Data.Set.Base.Set [GHC.Types.Char])
+                      @ (Data.HashMap.Map
+                           ([GHC.Types.Char], GHC.Types.Char)
+                           (Data.Set.Base.Set [GHC.Types.Char]))
+                      (\ (ds :: ([GHC.Types.Char], GHC.Types.Char))
+                         (v :: Data.Set.Base.Set [GHC.Types.Char])[OneShot]
+                         (acc :: Data.HashMap.Map
+                                   ([GHC.Types.Char], GHC.Types.Char)
+                                   (Data.Set.Base.Set [GHC.Types.Char]))[OneShot] ->
+                       case ds of wild { (,) s c ->
+                       (Data.HashMap.fromList1
+                          @ ([GHC.Types.Char], GHC.Types.Char)
+                          @ (Data.Set.Base.Set [GHC.Types.Char])
+                          Lib.$s$fHashable(,)
+                          Lib.$s$fOrd(,)
+                          (GHC.Types.: @ GHC.Types.Char w s, c)
+                          (Lib.$sfromList (go5 (GHC.Types.[] @ GHC.Base.String) v))
+                          acc)
+                         `cast`
+                       (Sym (Data.HashMap.N:Map[0]
+                                 <([GHC.Types.Char], GHC.Types.Char)>_N
+                                 <Data.Set.Base.Set [GHC.Types.Char]>_R)) })
+                      (Data.IntMap.Base.Nil
+                         @ (Data.HashMap.Some
+                              ([GHC.Types.Char], GHC.Types.Char)
+                              (Data.Set.Base.Set [GHC.Types.Char])))
+                        `cast`
+                      (Sym (Data.HashMap.N:Map[0]
+                                <([GHC.Types.Char], GHC.Types.Char)>_N
+                                <Data.Set.Base.Set [GHC.Types.Char]>_R))
+                      ww,
+                    letrec {
+                      go5 :: [GHC.Base.String]
+                             -> Data.Set.Base.Set [GHC.Types.Char] -> [GHC.Base.String]
+                        {- Arity: 2, Strictness: <L,1*U><S,1*U> -}
+                      = \ (z' :: [GHC.Base.String])
+                          (ds :: Data.Set.Base.Set [GHC.Types.Char]) ->
+                        case ds of wild {
+                          Data.Set.Base.Bin dt x l r
+                          -> go5
+                               (GHC.Types.:
+                                  @ GHC.Base.String
+                                  (GHC.Types.: @ GHC.Types.Char w x)
+                                  (go5 z' r))
+                               l
+                          Data.Set.Base.Tip -> z' }
+                    } in
+                    Lib.$sfromList (go5 (GHC.Types.[] @ GHC.Base.String) ww1),
+                    GHC.Types.: @ GHC.Types.Char w ww2, ww3 #)) -}
+cfc884e9e71169ddbc886ff707e6df37
   $wprocessChar ::
     GHC.Types.Char
     -> Data.HashMap.Map
          (GHC.Base.String, GHC.Types.Char)
          (Data.Set.Base.Set GHC.Base.String)
     -> Data.Set.Base.Set GHC.Base.String
+    -> GHC.Base.String
     -> Data.Set.Base.Set GHC.Base.String
     -> (# Data.HashMap.Map
             (GHC.Base.String, GHC.Types.Char)
             (Data.Set.Base.Set GHC.Base.String),
-          Data.Set.Base.Set GHC.Base.String,
+          Data.Set.Base.Set GHC.Base.String, GHC.Base.String,
           Data.Set.Base.Set GHC.Base.String #)
-  {- Arity: 4, Strictness: <L,U(U)><L,U><L,U><L,1*U>, Inline: [0],
+  {- Arity: 5, Strictness: <L,U(U)><L,U><L,U><L,U><L,U>, Inline: [0],
      Unfolding: (\ (w :: GHC.Types.Char)
                    (ww :: Data.HashMap.Map
                             (GHC.Base.String, GHC.Types.Char)
                             (Data.Set.Base.Set GHC.Base.String))
                    (ww1 :: Data.Set.Base.Set GHC.Base.String)
-                   (ww2 :: Data.Set.Base.Set GHC.Base.String) ->
-                 (# ww, ww1,
+                   (ww2 :: GHC.Base.String)
+                   (ww3 :: Data.Set.Base.Set GHC.Base.String) ->
+                 (# ww, ww1, ww2,
                     letrec {
                       go5 :: Data.Set.Base.Set GHC.Base.String
                              -> Data.Set.Base.Set GHC.Base.String
@@ -563,8 +1004,8 @@ a008dfaf310acacc234e39386a559115
                           Data.Set.Base.Bin dt x l r
                           -> case go5 z' r of wild1 {
                                Data.Set.Base.Bin ipv ipv1 ipv2 ipv3
-                               -> case w of ww3 { GHC.Types.C# ww4 ->
-                                  case Lib.$wtranState ww4 x ww of wild2 {
+                               -> case w of ww4 { GHC.Types.C# ww5 ->
+                                  case Lib.$wtranState ww5 x ww of wild2 {
                                     Data.Set.Base.Bin ipv4 ipv5 ipv6 ipv7
                                     -> go5
                                          (Data.Set.Base.union_$shedgeUnion
@@ -583,12 +1024,151 @@ a008dfaf310acacc234e39386a559115
                                          l
                                     Data.Set.Base.Tip -> go5 wild1 l } }
                                Data.Set.Base.Tip
-                               -> case w of ww3 { GHC.Types.C# ww4 ->
-                                  go5 (Lib.$wtranState ww4 x ww) l } }
+                               -> case w of ww4 { GHC.Types.C# ww5 ->
+                                  go5 (Lib.$wtranState ww5 x ww) l } }
                           Data.Set.Base.Tip -> z' }
                     } in
-                    go5 (Data.Set.Base.Tip @ GHC.Base.String) ww2 #)) -}
-29fcadc5074d5678b45040c2964d3f0a
+                    go5
+                      (Data.Set.Base.Tip @ GHC.Base.String)
+                      (Lib.reachable ww3 ww) #)) -}
+019a407aad66e06c93bc397c7b05d6ce
+  $wsetAcceptingStates ::
+    Lib.Automaton
+    -> Data.HashMap.Map
+         (GHC.Base.String, GHC.Types.Char)
+         (Data.Set.Base.Set GHC.Base.String)
+    -> GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+    -> (# Data.HashMap.Map
+            (GHC.Base.String, GHC.Types.Char)
+            (Data.Set.Base.Set GHC.Base.String),
+          Data.Set.Base.Set GHC.Base.String, GHC.Base.String,
+          Data.Set.Base.Set GHC.Base.String #)
+  {- Arity: 4, Strictness: <L,U(A,U,A,A)><L,U><L,U><L,U>,
+     Inline: [0] -}
+c021f1edd0649538a6fe11c1ba70b34c
+  $wsetUniqueStateID ::
+    Data.HashMap.Map
+      (GHC.Base.String, GHC.Types.Char)
+      (Data.Set.Base.Set GHC.Base.String)
+    -> Data.Set.Base.Set GHC.Base.String
+    -> GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+    -> (# Data.HashMap.Map
+            (GHC.Base.String, GHC.Types.Char)
+            (Data.Set.Base.Set GHC.Base.String),
+          Data.Set.Base.Set GHC.Base.String, GHC.Base.String,
+          Data.Set.Base.Set GHC.Base.String #)
+  {- Arity: 4, Strictness: <L,U><L,1*U><L,U><L,U>, Inline: [0],
+     Unfolding: (\ (ww :: Data.HashMap.Map
+                            (GHC.Base.String, GHC.Types.Char)
+                            (Data.Set.Base.Set GHC.Base.String))
+                   (ww1 :: Data.Set.Base.Set GHC.Base.String)
+                   (ww2 :: GHC.Base.String)
+                   (ww3 :: Data.Set.Base.Set GHC.Base.String) ->
+                 let {
+                   names :: Data.HashMap.Map GHC.Base.String GHC.Base.String
+                   = Data.HashMap.fromList
+                       @ GHC.Base.String
+                       @ GHC.Base.String
+                       Data.Hashable.Class.$fHashable[]_$s$fHashable[]
+                       GHC.Classes.$fOrd[]_$s$fOrd[]1
+                       (Lib.$wgenerateNamesMap ww)
+                 } in
+                 (# letrec {
+                      go5 :: [GHC.Base.String]
+                             -> Data.Set.Base.Set [GHC.Types.Char] -> [GHC.Base.String]
+                        {- Arity: 2, Strictness: <L,1*U><S,1*U> -}
+                      = \ (z' :: [GHC.Base.String])
+                          (ds :: Data.Set.Base.Set [GHC.Types.Char]) ->
+                        case ds of wild {
+                          Data.Set.Base.Bin dt x l r
+                          -> go5
+                               (GHC.Types.:
+                                  @ GHC.Base.String
+                                  (Data.HashMap.!
+                                     @ GHC.Base.String
+                                     @ GHC.Base.String
+                                     Data.Hashable.Class.$fHashable[]_$s$fHashable[]
+                                     GHC.Classes.$fOrd[]_$s$fOrd[]1
+                                     names
+                                     x)
+                                  (go5 z' r))
+                               l
+                          Data.Set.Base.Tip -> z' }
+                    } in
+                    Data.HashMap.foldWithKey
+                      @ (GHC.Base.String, GHC.Types.Char)
+                      @ (Data.Set.Base.Set GHC.Base.String)
+                      @ (Data.HashMap.Map
+                           (GHC.Base.String, GHC.Types.Char)
+                           (Data.Set.Base.Set GHC.Base.String))
+                      (\ (ds :: (GHC.Base.String, GHC.Types.Char))
+                         (v :: Data.Set.Base.Set GHC.Base.String)[OneShot]
+                         (acc :: Data.HashMap.Map
+                                   (GHC.Base.String, GHC.Types.Char)
+                                   (Data.Set.Base.Set GHC.Base.String))[OneShot] ->
+                       case ds of wild { (,) s c ->
+                       (Data.HashMap.fromList1
+                          @ (GHC.Base.String, GHC.Types.Char)
+                          @ (Data.Set.Base.Set GHC.Base.String)
+                          Lib.$s$fHashable(,)
+                          Lib.$s$fOrd(,)
+                          (Data.HashMap.!
+                             @ GHC.Base.String
+                             @ GHC.Base.String
+                             Data.Hashable.Class.$fHashable[]_$s$fHashable[]
+                             GHC.Classes.$fOrd[]_$s$fOrd[]1
+                             names
+                             s,
+                           c)
+                          (Lib.$sfromList (go5 (GHC.Types.[] @ GHC.Base.String) v))
+                          acc)
+                         `cast`
+                       (Sym (Data.HashMap.N:Map[0]
+                                 <(GHC.Base.String, GHC.Types.Char)>_N
+                                 <Data.Set.Base.Set GHC.Base.String>_R)) })
+                      (Data.IntMap.Base.Nil
+                         @ (Data.HashMap.Some
+                              (GHC.Base.String, GHC.Types.Char)
+                              (Data.Set.Base.Set GHC.Base.String)))
+                        `cast`
+                      (Sym (Data.HashMap.N:Map[0]
+                                <(GHC.Base.String, GHC.Types.Char)>_N
+                                <Data.Set.Base.Set GHC.Base.String>_R))
+                      ww,
+                    letrec {
+                      go5 :: [GHC.Base.String]
+                             -> Data.Set.Base.Set [GHC.Types.Char] -> [GHC.Base.String]
+                        {- Arity: 2, Strictness: <L,1*U><S,1*U> -}
+                      = \ (z' :: [GHC.Base.String])
+                          (ds :: Data.Set.Base.Set [GHC.Types.Char]) ->
+                        case ds of wild {
+                          Data.Set.Base.Bin dt x l r
+                          -> go5
+                               (GHC.Types.:
+                                  @ GHC.Base.String
+                                  (Data.HashMap.!
+                                     @ GHC.Base.String
+                                     @ GHC.Base.String
+                                     Data.Hashable.Class.$fHashable[]_$s$fHashable[]
+                                     GHC.Classes.$fOrd[]_$s$fOrd[]1
+                                     names
+                                     x)
+                                  (go5 z' r))
+                               l
+                          Data.Set.Base.Tip -> z' }
+                    } in
+                    Lib.$sfromList (go5 (GHC.Types.[] @ GHC.Base.String) ww1),
+                    Data.HashMap.!
+                      @ GHC.Base.String
+                      @ GHC.Base.String
+                      Data.Hashable.Class.$fHashable[]_$s$fHashable[]
+                      GHC.Classes.$fOrd[]_$s$fOrd[]1
+                      names
+                      ww2,
+                    ww3 #)) -}
+579ade77405e5a520d0dc8817871c553
   $wtranState ::
     GHC.Prim.Char#
     -> GHC.Base.String
@@ -596,29 +1176,119 @@ a008dfaf310acacc234e39386a559115
          (GHC.Base.String, GHC.Types.Char)
          (Data.Set.Base.Set GHC.Base.String)
     -> Data.Set.Base.Set GHC.Base.String
-  {- Arity: 3, Strictness: <S,U><S,U><S,U>, Inline: [0] -}
-e3a2e0a6a0bb92038b4c59f7efbd381d
+  {- Arity: 3, Strictness: <S,U><S,U><S,U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Char#)
+                   (w :: GHC.Base.String)
+                   (w1 :: Data.HashMap.Map
+                            (GHC.Base.String, GHC.Types.Char)
+                            (Data.Set.Base.Set GHC.Base.String)) ->
+                 case Data.Hashable.Class.$wgo
+                        w
+                        -2578643520546668380#
+                        0# of ww2 { (#,#) ww3 ww4 ->
+                 case Data.IntMap.Base.$wlookup
+                        @ (Data.HashMap.Some
+                             (GHC.Base.String, GHC.Types.Char)
+                             (Data.Set.Base.Set GHC.Base.String))
+                        (GHC.Prim.xorI#
+                           (GHC.Prim.*#
+                              (GHC.Prim.xorI# (GHC.Prim.*# ww3 16777619#) ww4)
+                              16777619#)
+                           (GHC.Prim.ord# ww))
+                        w1
+                          `cast`
+                        (Data.HashMap.N:Map[0]
+                             <(GHC.Base.String, GHC.Types.Char)>_N
+                             <Data.Set.Base.Set GHC.Base.String>_R) of wild {
+                   GHC.Base.Nothing -> Data.Set.Base.Tip @ GHC.Base.String
+                   GHC.Base.Just x
+                   -> let {
+                        wild1 :: GHC.Types.Char = GHC.Types.C# ww
+                      } in
+                      case x of wild2 {
+                        Data.HashMap.Only k' x1
+                        -> case k' of ww1 { (,) ww5 ww6 ->
+                           case GHC.Classes.$fOrd[]_$s$ccompare1 w ww5 of wild3 {
+                             DEFAULT -> Data.Set.Base.Tip @ GHC.Base.String
+                             GHC.Types.EQ
+                             -> case ww6 of wild4 { GHC.Types.C# y ->
+                                case GHC.Prim.tagToEnum#
+                                       @ GHC.Types.Bool
+                                       (GHC.Prim.eqChar# ww y) of wild5 {
+                                  GHC.Types.False -> Data.Set.Base.Tip @ GHC.Base.String
+                                  GHC.Types.True
+                                  -> Data.HashMap.!
+                                       @ (GHC.Base.String, GHC.Types.Char)
+                                       @ (Data.Set.Base.Set GHC.Base.String)
+                                       Lib.$s$fHashable(,)
+                                       Lib.$s$fOrd(,)
+                                       w1
+                                       (w, wild1) } } } }
+                        Data.HashMap.More s
+                        -> case Data.Map.Base.lookup
+                                  @ (GHC.Base.String, GHC.Types.Char)
+                                  @ (Data.Set.Base.Set GHC.Base.String)
+                                  Lib.$s$fOrd(,)
+                                  (w, wild1)
+                                  s of wild3 {
+                             GHC.Base.Nothing -> Data.Set.Base.Tip @ GHC.Base.String
+                             GHC.Base.Just ds
+                             -> Data.HashMap.!
+                                  @ (GHC.Base.String, GHC.Types.Char)
+                                  @ (Data.Set.Base.Set GHC.Base.String)
+                                  Lib.$s$fHashable(,)
+                                  Lib.$s$fOrd(,)
+                                  w1
+                                  (w, wild1) } } } }) -}
+8209839fdc1a46399b7cc43c40950532
   data Automaton
     = Automaton {transitions :: Data.HashMap.Map
                                   (GHC.Base.String, GHC.Types.Char)
                                   (Data.Set.Base.Set GHC.Base.String),
                  accept :: Data.Set.Base.Set GHC.Base.String,
+                 starting :: GHC.Base.String,
                  state :: Data.Set.Base.Set GHC.Base.String}
-21edd200e9161bdffbe365213bf02f88
+3fbdca6c45282fde84ecb4b682938b18
   accept :: Lib.Automaton -> Data.Set.Base.Set GHC.Base.String
   RecSel Left Lib.Automaton
-  {- Arity: 1, HasNoCafRefs, Strictness: <S(LSL),1*U(A,1*U,A)>,
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LSLL),1*U(A,1*U,A,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Lib.Automaton) ->
-                 case ds of wild { Lib.Automaton ds1 ds2 ds3 -> ds2 }) -}
-422f2e9b6ee527be1821dd26c4b594c5
+                 case ds of wild { Lib.Automaton ds1 ds2 ds3 ds4 -> ds2 }) -}
+9bed75e67e29f0dce57737e5806f046f
+  acceptingStates :: Lib.Automaton -> [GHC.Base.String]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LSLL),1*U(A,1*U,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Lib.Automaton) ->
+                 case x of wild { Lib.Automaton ds ds1 ds2 ds3 ->
+                 GHC.Base.build
+                   @ [GHC.Types.Char]
+                   (\ @ b
+                      (c :: [GHC.Types.Char] -> b -> b)[OneShot]
+                      (n :: b)[OneShot] ->
+                    Data.Set.Base.foldrFB @ [GHC.Types.Char] @ b c n ds1) }) -}
+e556243f4d38c94c55e034f9e6cec5a3
   addAcceptState :: GHC.Base.String -> Lib.Automaton -> Lib.Automaton
-  {- Arity: 2, Strictness: <L,1*U><S,1*U(U,1*U,U)>m,
+  {- Arity: 2, Strictness: <L,1*U><S,1*U(U,1*U,U,U)>m,
      Unfolding: InlineRule (2, True, False)
                 (\ (ch :: GHC.Base.String) (aut :: Lib.Automaton) ->
-                 case aut of wild { Lib.Automaton ds ds1 ds2 ->
-                 Lib.Automaton ds (Lib.$sinsert_$sgo5 ch ds1) ds2 }) -}
-d6df597798b22e2fb07d3125732bb044
+                 case aut of wild { Lib.Automaton ds ds1 ds2 ds3 ->
+                 Lib.Automaton ds (Lib.$sinsert_$sgo5 ch ds1) ds2 ds3 }) -}
+a272cca942b604f6d8599faee964fc95
+  addEpsilon ::
+    GHC.Base.String
+    -> GHC.Base.String -> Lib.Automaton -> Lib.Automaton
+  {- Arity: 3, Strictness: <L,U><L,1*U><S,1*U(1*U,U,U,U)>m,
+     Unfolding: InlineRule (3, True, False)
+                (\ (x :: GHC.Base.String)
+                   (y :: GHC.Base.String)
+                   (eta :: Lib.Automaton) ->
+                 Lib.addTransition x y Lib.addEpsilon1 eta) -}
+0c7cbcd0fed63983deb1842a2706cb82
+  addEpsilon1 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.C# '\8714'#) -}
+825e61fecbc8a628278b1c3c1e7fe9c2
   addTransFromList ::
     [GHC.Base.String] -> Lib.Automaton -> Lib.Automaton
   {- Arity: 1, Strictness: <S,1*U>,
@@ -635,13 +1305,13 @@ d6df597798b22e2fb07d3125732bb044
                              -> case ds3 of wild3 {
                                   []
                                   -> let {
-                                       value :: GHC.Types.Char = Lib.toChar z
+                                       w :: GHC.Types.Char = Lib.toChar z
                                      } in
                                      let {
-                                       lvl21 :: (GHC.Base.String, GHC.Types.Char) = (x, value)
+                                       lvl12 :: (GHC.Base.String, GHC.Types.Char) = (x, w)
                                      } in
                                      let {
-                                       lvl22 :: Data.Set.Base.Set GHC.Base.String
+                                       lvl13 :: Data.Set.Base.Set GHC.Base.String
                                        = case y of dt { DEFAULT ->
                                          Data.Set.Base.Bin
                                            @ GHC.Base.String
@@ -650,56 +1320,233 @@ d6df597798b22e2fb07d3125732bb044
                                            (Data.Set.Base.Tip @ GHC.Base.String)
                                            (Data.Set.Base.Tip @ GHC.Base.String) }
                                      } in
-                                     \ (aut :: Lib.Automaton) ->
-                                     case aut of wild4 { Lib.Automaton ds4 ds5 ds6 ->
+                                     \ (w1 :: Lib.Automaton) ->
+                                     case w1 of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
                                      Lib.Automaton
-                                       (Data.HashMap.fromList1
+                                       (Data.HashMap.fromListWith1
                                           @ (GHC.Base.String, GHC.Types.Char)
                                           @ (Data.Set.Base.Set GHC.Base.String)
                                           Lib.$s$fHashable(,)
                                           Lib.$s$fOrd(,)
-                                          lvl21
-                                          lvl22
-                                          ds4)
+                                          Lib.$sunion1
+                                          lvl12
+                                          lvl13
+                                          ww1)
                                          `cast`
                                        (Sym (Data.HashMap.N:Map[0]
                                                  <(GHC.Base.String, GHC.Types.Char)>_N
                                                  <Data.Set.Base.Set GHC.Base.String>_R))
-                                       ds5
-                                       ds6 }
+                                       ww2
+                                       ww3
+                                       ww4 }
                                   : ipv ipv1 -> GHC.Base.id @ Lib.Automaton } } } }) -}
-1a3b622c10474479824ae6ed66af3096
+aa8b587f4b0c4c986bd1ccdfb436bcfc
   addTransition ::
     GHC.Base.String
     -> GHC.Base.String
     -> GHC.Types.Char
     -> Lib.Automaton
     -> Lib.Automaton
-  {- Arity: 4, Strictness: <L,U><L,1*U><L,U><S,1*U(1*U,U,U)>m,
+  {- Arity: 4, Strictness: <L,U><L,1*U><L,U><S,1*U(1*U,U,U,U)>m,
+     Inline: INLINE[0],
      Unfolding: InlineRule (4, True, False)
-                (\ (beginning :: GHC.Base.String)
-                   (ending :: GHC.Base.String)
-                   (value :: GHC.Types.Char)
-                   (aut :: Lib.Automaton) ->
-                 case aut of wild { Lib.Automaton ds ds1 ds2 ->
+                (\ (w :: GHC.Base.String)
+                   (w1 :: GHC.Base.String)
+                   (w2 :: GHC.Types.Char)
+                   (w3 :: Lib.Automaton) ->
+                 case w3 of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
                  Lib.Automaton
-                   (Data.HashMap.fromList1
+                   (Data.HashMap.fromListWith1
                       @ (GHC.Base.String, GHC.Types.Char)
                       @ (Data.Set.Base.Set GHC.Base.String)
                       Lib.$s$fHashable(,)
                       Lib.$s$fOrd(,)
-                      (beginning, value)
-                      (Data.Set.Base.singleton @ GHC.Base.String ending)
-                      ds)
+                      Lib.$sunion1
+                      (w, w2)
+                      (Data.Set.Base.singleton @ GHC.Base.String w1)
+                      ww1)
                      `cast`
                    (Sym (Data.HashMap.N:Map[0]
                              <(GHC.Base.String, GHC.Types.Char)>_N
                              <Data.Set.Base.Set GHC.Base.String>_R))
-                   ds1
-                   ds2 }) -}
-8730ae4f636328ac4451305ee0f8f689
+                   ww2
+                   ww3
+                   ww4 }) -}
+c3323e23de157cb46069973420f63b91
+  determinization :: Lib.Automaton -> Lib.Automaton -> Lib.Automaton
+  {- Arity: 2, Strictness: <L,U(U,U,A,A)><S(LLLS),1*U(U,U,U,U)>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Lib.Automaton) (w1 :: Lib.Automaton) ->
+                 case w1 of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 case Lib.$wdeterminization
+                        w
+                        ww1
+                        ww2
+                        ww3
+                        ww4 of ww5 { (#,,,#) ww6 ww7 ww8 ww9 ->
+                 Lib.Automaton ww6 ww7 ww8 ww9 } }) -}
+a8bd972449d4c2fdd6379b8d28da30db
+  determinize :: Lib.Automaton -> Lib.Automaton
+  {- Arity: 1, Strictness: <L,U(U,U,A,A)>m, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Lib.Automaton) ->
+                 case Lib.$wdeterminize w of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
+                 Lib.Automaton ww1 ww2 ww3 ww4 }) -}
+aabf792f8ce974504f06ca61d54e33ae
+  determinize1 ::
+    Data.HashMap.Map
+      (GHC.Base.String, GHC.Types.Char)
+      (Data.Set.Base.Set [GHC.Types.Char])
+    -> Data.IntMap.Base.IntMap
+         (Data.HashMap.Some
+            (GHC.Base.String, GHC.Types.Char)
+            (Data.Set.Base.Set [GHC.Types.Char]))
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ (ds :: Data.HashMap.Map
+                            (GHC.Base.String, GHC.Types.Char)
+                            (Data.Set.Base.Set [GHC.Types.Char])) ->
+                 Data.IntMap.Base.map
+                   @ (Data.HashMap.Some
+                        (GHC.Base.String, GHC.Types.Char)
+                        (Data.Set.Base.Set [GHC.Types.Char]))
+                   @ (Data.HashMap.Some
+                        (GHC.Base.String, GHC.Types.Char)
+                        (Data.Set.Base.Set [GHC.Types.Char]))
+                   Lib.determinize2
+                   ds
+                     `cast`
+                   (Data.HashMap.N:Map[0]
+                        <(GHC.Base.String, GHC.Types.Char)>_N
+                        <Data.Set.Base.Set [GHC.Types.Char]>_R)) -}
+e801db54c431fc0cf3b70d194c426874
+  determinize10 :: Data.Set.Base.Set [GHC.Types.Char]
+  {- Strictness: m1,
+     Unfolding: (Data.Set.Base.Bin
+                   @ [GHC.Types.Char]
+                   1#
+                   Lib.determinize_dt
+                   (Data.Set.Base.Tip @ [GHC.Types.Char])
+                   (Data.Set.Base.Tip @ [GHC.Types.Char])) -}
+abf2d4dff1c970ee38023c6d59e88861
+  determinize2 ::
+    Data.HashMap.Some
+      (GHC.Base.String, GHC.Types.Char)
+      (Data.Set.Base.Set [GHC.Types.Char])
+    -> Data.HashMap.Some
+         (GHC.Base.String, GHC.Types.Char)
+         (Data.Set.Base.Set [GHC.Types.Char])
+  {- Arity: 1,
+     Unfolding: (\ (ds1 :: Data.HashMap.Some
+                             (GHC.Base.String, GHC.Types.Char)
+                             (Data.Set.Base.Set [GHC.Types.Char])) ->
+                 case ds1 of wild {
+                   Data.HashMap.Only k1 x
+                   -> Data.HashMap.Only
+                        @ (GHC.Base.String, GHC.Types.Char)
+                        @ (Data.Set.Base.Set [GHC.Types.Char])
+                        k1
+                        (Lib.determinize3 x)
+                   Data.HashMap.More t
+                   -> case Data.Map.Base.map
+                             @ (Data.Set.Base.Set [GHC.Types.Char])
+                             @ (Data.Set.Base.Set [GHC.Types.Char])
+                             @ (GHC.Base.String, GHC.Types.Char)
+                             Lib.determinize3
+                             t of dt { DEFAULT ->
+                      Data.HashMap.More
+                        @ (GHC.Base.String, GHC.Types.Char)
+                        @ (Data.Set.Base.Set [GHC.Types.Char])
+                        dt } }) -}
+5d7821d3e265b8a2e6e4fce25c3f0b26
+  determinize3 ::
+    Data.Set.Base.Set [GHC.Types.Char]
+    -> Data.Set.Base.Set [GHC.Types.Char]
+  {- Arity: 1, Strictness: <S,1*U>m1, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Data.Set.Base.Set [GHC.Types.Char]) ->
+                 case case Data.Set.Base.$fDataSet1
+                             @ [GHC.Types.Char]
+                             (GHC.Types.[] @ [GHC.Types.Char])
+                             w of wild {
+                        [] -> GHC.Types.[] @ GHC.Types.Char
+                        : x xs1
+                        -> Data.OldList.intercalate_$spoly_go
+                             @ GHC.Types.Char
+                             x
+                             (Data.OldList.prependToAll
+                                @ [GHC.Types.Char]
+                                Lib.determinize4
+                                xs1) } of dt { DEFAULT ->
+                 Data.Set.Base.Bin
+                   @ [GHC.Types.Char]
+                   1#
+                   dt
+                   (Data.Set.Base.Tip @ [GHC.Types.Char])
+                   (Data.Set.Base.Tip @ [GHC.Types.Char]) }) -}
+1714e047bb5ad359f794b5f8c2b0ae90
+  determinize4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# ","#) -}
+205698dc8cfe99c8b3b209f1c448e486
+  determinize5 :: [GHC.Integer.Type.Integer]
+  {- Unfolding: (case GHC.Enum.$wenumDeltaInteger
+                        Lib.determinize7
+                        Lib.determinize6 of ww { (#,#) ww1 ww2 ->
+                 GHC.Types.: @ GHC.Integer.Type.Integer ww1 ww2 }) -}
+1a1ecf58ff5668ba8056c4f06adec3b6
+  determinize6 :: GHC.Integer.Type.Integer
+  {- HasNoCafRefs, Unfolding: (1) -}
+fbc1f6a6c05558f26fb769ba01a6f2f9
+  determinize7 :: GHC.Integer.Type.Integer
+  {- HasNoCafRefs, Unfolding: (0) -}
+3678a054f2cd25e53ca7cdbbb3b14bee
+  determinize8 ::
+    (GHC.Base.String, GHC.Types.Char)
+    -> Data.Set.Base.Set GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+    -> Data.Set.Base.Set GHC.Base.String
+  {- Arity: 3, Strictness: <S(SL),1*U(1*U,A)><S,1*U><S,1*U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: (GHC.Base.String, GHC.Types.Char))
+                   (w1 :: Data.Set.Base.Set GHC.Base.String)
+                   (w2 :: Data.Set.Base.Set GHC.Base.String) ->
+                 case w of ww { (,) ww1 ww2 -> Lib.$wextractStates ww1 w1 w2 }) -}
+f129e59cdb8f6564e6246c669694020d
+  determinize9 ::
+    [GHC.Integer.Type.Integer] -> [(GHC.Base.String, GHC.Base.String)]
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ (ds :: [GHC.Integer.Type.Integer]) ->
+                 GHC.Types.[] @ (GHC.Base.String, GHC.Base.String)) -}
+ba5c057865b157a32109f63e7504a4a6
+  determinizeTransitions ::
+    Lib.Automaton -> Lib.Automaton -> Lib.Automaton
+  {- Arity: 2, Strictness: <L,1*U(1*U,A,A,A)><S(LLLS),U(U,U,U,U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Lib.Automaton) (w1 :: Lib.Automaton) ->
+                 case w1 of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 Lib.$wdeterminizeTransitions w ww1 ww2 ww3 ww4 }) -}
+f964da820800af04f4c881d698d19dd4
+  determinizeTransitions1 :: [GHC.Types.Char] -> [[GHC.Types.Char]]
+  {- Unfolding: (Data.List.Split.Internals.splitOn
+                   @ GHC.Types.Char
+                   GHC.Classes.$fEqChar
+                   Lib.determinize4) -}
+a1939b8d05e82368e700c24c995dd856
+  determinize_dt :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "0"#) -}
+854eb2196bb5c82104dc401f46b0e541
+  determinize_go5 ::
+    ([GHC.Integer.Type.Integer]
+     -> [(GHC.Base.String, GHC.Base.String)])
+    -> Data.Set.Base.Set [GHC.Types.Char]
+    -> [GHC.Integer.Type.Integer]
+    -> [(GHC.Base.String, GHC.Base.String)]
+  {- Arity: 2, Strictness: <L,1*U><S,1*U> -}
+4ee5542d42c7574f13532f987b0cb7ec
   emptyAutomaton :: Lib.Automaton
-  {- HasNoCafRefs, Strictness: m,
+  {- Strictness: m,
      Unfolding: (Lib.Automaton
                    (Data.IntMap.Base.Nil
                       @ (Data.HashMap.Some
@@ -710,82 +1557,198 @@ d6df597798b22e2fb07d3125732bb044
                              <(GHC.Base.String, GHC.Types.Char)>_N
                              <Data.Set.Base.Set GHC.Base.String>_R))
                    (Data.Set.Base.Tip @ GHC.Base.String)
+                   Lib.determinize_dt
                    (Data.Set.Base.Tip @ GHC.Base.String)) -}
-41484542d850ceaa9c70c1da610c2e50
-  initAutomaton :: Lib.Automaton -> Lib.Automaton
-  {- Arity: 1, Strictness: <S,1*U(U,U,A)>m,
+bdab66a5af6c970ccee332f027597ebb
+  extractAlphabet ::
+    Lib.Automaton -> Data.Set.Base.Set GHC.Types.Char
+  {- Arity: 1, Strictness: <S(SLLL),1*U(1*U,A,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Lib.Automaton) ->
+                 case x of wild { Lib.Automaton ds ds1 ds2 ds3 ->
+                 Data.HashMap.foldWithKey
+                   @ (GHC.Base.String, GHC.Types.Char)
+                   @ (Data.Set.Base.Set GHC.Base.String)
+                   @ (Data.Set.Base.Set GHC.Types.Char)
+                   Lib.extractAlphabet1
+                   (Data.Set.Base.Tip @ GHC.Types.Char)
+                   ds }) -}
+c401ebc79bf8200eb6834bac219c5192
+  extractAlphabet1 ::
+    (GHC.Base.String, GHC.Types.Char)
+    -> Data.Set.Base.Set GHC.Base.String
+    -> Data.Set.Base.Set GHC.Types.Char
+    -> Data.Set.Base.Set GHC.Types.Char
+  {- Arity: 3, Strictness: <S(LS),1*U(A,1*U(U))><L,A><S,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (ds :: (GHC.Base.String, GHC.Types.Char))
+                   (ds1 :: Data.Set.Base.Set GHC.Base.String)
+                   (acc :: Data.Set.Base.Set GHC.Types.Char) ->
+                 case ds of wild { (,) ds2 c -> Lib.$sinsert_$sgo1 c acc }) -}
+e86c82112ecf227ddde378fdf0bb6ea5
+  extractStates :: Lib.Automaton -> Data.Set.Base.Set GHC.Base.String
+  {- Arity: 1, Strictness: <S(SLLL),1*U(1*U,A,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Lib.Automaton) ->
+                 case x of wild { Lib.Automaton ds ds1 ds2 ds3 ->
+                 Data.HashMap.foldWithKey
+                   @ (GHC.Base.String, GHC.Types.Char)
+                   @ (Data.Set.Base.Set GHC.Base.String)
+                   @ (Data.Set.Base.Set GHC.Base.String)
+                   Lib.determinize8
+                   (Data.Set.Base.Tip @ GHC.Base.String)
+                   ds }) -}
+1c67ed4e6f24237745905229cf487cd2
+  flattenSet :: Lib.Automaton -> Lib.Automaton
+  {- Arity: 1, Strictness: <S,1*U(1*U,U,U,U)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (aut :: Lib.Automaton) ->
-                 case aut of wild { Lib.Automaton ds ds1 ds2 ->
-                 Lib.Automaton ds ds1 Lib.initAutomaton1 }) -}
-25c557227a68225760a654a76640fa38
-  initAutomaton1 :: Data.Set.Base.Set [GHC.Types.Char]
-  {- Strictness: m1,
-     Unfolding: (Data.Set.Base.Bin
-                   @ [GHC.Types.Char]
-                   1#
-                   Lib.initAutomaton_dt
-                   (Data.Set.Base.Tip @ [GHC.Types.Char])
-                   (Data.Set.Base.Tip @ [GHC.Types.Char])) -}
-f11c77483321fe421f8634fde4f7f004
-  initAutomaton_dt :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "0"#) -}
-7ebc4ca19a1b0bb720a4c303c50a13da
-  isAccepted :: Lib.Automaton -> GHC.Types.Bool
-  {- Arity: 1, Strictness: <S(LSL),U(U,U,U)>, Inline: INLINE[0],
+                 case aut of wild { Lib.Automaton ds ds1 ds2 ds3 ->
+                 Lib.Automaton
+                   (Lib.determinize1 ds)
+                     `cast`
+                   (Sym (Data.HashMap.N:Map[0]
+                             <(GHC.Base.String, GHC.Types.Char)>_N
+                             <Data.Set.Base.Set [GHC.Types.Char]>_R))
+                   ds1
+                   ds2
+                   ds3 }) -}
+f78812dc997c7a83e26ae744c9dbcc82
+  generateNamesMap ::
+    Lib.Automaton -> Data.HashMap.Map GHC.Base.String GHC.Base.String
+  {- Arity: 1, Strictness: <S(SLLL),1*U(1*U,A,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Lib.Automaton) ->
+                 Data.HashMap.fromList
+                   @ GHC.Base.String
+                   @ GHC.Base.String
+                   Data.Hashable.Class.$fHashable[]_$s$fHashable[]
+                   GHC.Classes.$fOrd[]_$s$fOrd[]1
+                   (Lib.generateNamesMap1 x)) -}
+ad750733dba3629d819a1844c00a1d8c
+  generateNamesMap1 ::
+    Lib.Automaton -> [(GHC.Base.String, GHC.Base.String)]
+  {- Arity: 1, Strictness: <S(SLLL),1*U(1*U,A,A,A)>,
+     Inline: INLINE[0],
      Unfolding: InlineRule (1, True, False)
                 (\ (w :: Lib.Automaton) ->
-                 case w of ww { Lib.Automaton ww1 ww2 ww3 ->
-                 Lib.$wisAccepted ww1 ww2 ww3 }) -}
-1562c4c25aa3b092541fd629fbec6409
+                 case w of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 Lib.$wgenerateNamesMap ww1 }) -}
+0786a6660de0b87190b107b293965fb0
+  initAutomaton :: Lib.Automaton -> Lib.Automaton
+  {- Arity: 1, Strictness: <S,1*U(U,U,U,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (aut :: Lib.Automaton) ->
+                 case aut of wild { Lib.Automaton ds ds1 ds2 ds3 ->
+                 Lib.Automaton ds ds1 ds2 Lib.determinize10 }) -}
+3cc53ac352a2302cfbc8c326d77ff3da
+  isAccepted :: Lib.Automaton -> GHC.Types.Bool
+  {- Arity: 1, Strictness: <S(LSLL),U(U,U,U,U)>, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Lib.Automaton) ->
+                 case w of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 Lib.$wisAccepted ww1 ww2 ww3 ww4 }) -}
+e001440a11e313eb22b52fcd134f905c
+  mergeTrans :: Lib.Automaton -> Lib.Automaton -> Lib.Automaton
+  {- Arity: 2, Strictness: <S,1*U(1*U,U,U,U)><L,1*U(1*U,A,A,A)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a1 :: Lib.Automaton) (a2 :: Lib.Automaton) ->
+                 case a1 of wild { Lib.Automaton ds ds1 ds2 ds3 ->
+                 Lib.Automaton
+                   (case a2 of wild1 { Lib.Automaton ds4 ds5 ds6 ds7 ->
+                    (Data.HashMap.unions1
+                       @ (GHC.Base.String, GHC.Types.Char)
+                       @ (Data.Set.Base.Set GHC.Base.String)
+                       Lib.$s$fOrd(,)
+                       ds
+                       ds4)
+                      `cast`
+                    (Sym (Data.HashMap.N:Map[0]
+                              <(GHC.Base.String, GHC.Types.Char)>_N
+                              <Data.Set.Base.Set GHC.Base.String>_R)) })
+                   ds1
+                   ds2
+                   ds3 }) -}
+b8458215b72fe29b412aaab30f16841e
   parseLines :: [GHC.Base.String] -> Lib.Automaton -> Lib.Automaton
   {- Arity: 1, Strictness: <S,1*U>,
      Unfolding: (\ (x :: [GHC.Base.String]) -> Lib.parseLines_go x) -}
-8fb43ebddbb662ed655d4a3c4260c9f1
+08c585cb739f9b0672b08b8c24279bd2
   parseLines_go ::
     [[GHC.Types.Char]] -> Lib.Automaton -> Lib.Automaton
   {- Arity: 1, Strictness: <S,1*U> -}
-1fd439fd02d636545fad188d56f12f3c
+bf8f375dc604de79292d8c705729e011
   parseString :: GHC.Base.String -> Lib.Automaton -> Lib.Automaton
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: (\ (x :: GHC.Base.String) ->
-                 let {
-                   yolo :: [GHC.Base.String] = Data.OldList.words x
-                 } in
-                 case GHC.List.$wlenAcc
-                        @ [GHC.Types.Char]
-                        yolo
-                        0# of ww2 { DEFAULT ->
+                 case Data.OldList.wordsFB
+                        @ (GHC.Types.Int -> GHC.Types.Int)
+                        (GHC.List.lengthFB @ [GHC.Types.Char])
+                        (GHC.Base.id @ GHC.Types.Int)
+                        x
+                        Lib.parseString1 of wild { GHC.Types.I# x1 ->
                  case GHC.Prim.tagToEnum#
                         @ GHC.Types.Bool
-                        (GHC.Prim.># ww2 1#) of wild {
+                        (GHC.Prim.># x1 1#) of wild1 {
                    GHC.Types.False -> Lib.addAcceptState x
-                   GHC.Types.True -> Lib.addTransFromList yolo } }) -}
-bb18ff1d344063ea4ff0b95896945c4b
-  processChar :: GHC.Types.Char -> Lib.Automaton -> Lib.Automaton
-  {- Arity: 2, Strictness: <L,U(U)><S,1*U(U,U,1*U)>m,
+                   GHC.Types.True
+                   -> Lib.addTransFromList (Data.OldList.words x) } }) -}
+76253a6d370884684b1777167a1a3d8f
+  parseString1 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 0#) -}
+aacf3f0e4b5df2ce031cd57b7c83bb17
+  prependToState :: GHC.Types.Char -> Lib.Automaton -> Lib.Automaton
+  {- Arity: 2, Strictness: <L,U><S,1*U(1*U,1*U,U,U)>m,
      Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
                 (\ (w :: GHC.Types.Char) (w1 :: Lib.Automaton) ->
-                 case w1 of ww { Lib.Automaton ww1 ww2 ww3 ->
-                 case Lib.$wprocessChar w ww1 ww2 ww3 of ww4 { (#,,#) ww5 ww6 ww7 ->
-                 Lib.Automaton ww5 ww6 ww7 } }) -}
-031f1c0597ae15bd313198c64e1b3744
+                 case w1 of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 case Lib.$wprependToState
+                        w
+                        ww1
+                        ww2
+                        ww3
+                        ww4 of ww5 { (#,,,#) ww6 ww7 ww8 ww9 ->
+                 Lib.Automaton ww6 ww7 ww8 ww9 } }) -}
+7e427a5e55e4e38d9d526cade3e88633
+  processChar :: GHC.Types.Char -> Lib.Automaton -> Lib.Automaton
+  {- Arity: 2, Strictness: <L,U(U)><S,1*U(U,U,U,U)>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Char) (w1 :: Lib.Automaton) ->
+                 case w1 of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 case Lib.$wprocessChar
+                        w
+                        ww1
+                        ww2
+                        ww3
+                        ww4 of ww5 { (#,,,#) ww6 ww7 ww8 ww9 ->
+                 Lib.Automaton ww6 ww7 ww8 ww9 } }) -}
+2d4ae244fb0bb2a0d32a1a0e1edb45c6
   processString :: GHC.Base.String -> Lib.Automaton -> Lib.Automaton
-  {- Arity: 2, Strictness: <S,1*U><S,1*U(U,U,U)>m, Inline: INLINE[0],
+  {- Arity: 2, Strictness: <S,1*U><S,1*U(U,U,U,U)>m,
+     Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
                 (\ (w :: GHC.Base.String) (w1 :: Lib.Automaton) ->
-                 case w1 of ww { Lib.Automaton ww1 ww2 ww3 ->
-                 case Lib.$wgo w ww1 ww2 ww3 of ww4 { (#,,#) ww5 ww6 ww7 ->
-                 Lib.Automaton ww5 ww6 ww7 } }) -}
-ef6ecb2c0b0099aee88ce9765073c994
+                 case w1 of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 case Lib.$wgo w ww1 ww2 ww3 ww4 of ww5 { (#,,,#) ww6 ww7 ww8 ww9 ->
+                 Lib.Automaton ww6 ww7 ww8 ww9 } }) -}
+581fb23abee88b793c20caa4e94b0cf8
+  reachable ::
+    Data.Set.Base.Set GHC.Base.String
+    -> Data.HashMap.Map
+         (GHC.Base.String, GHC.Types.Char)
+         (Data.Set.Base.Set GHC.Base.String)
+    -> Data.Set.Base.Set GHC.Base.String
+  {- Arity: 2, Strictness: <S,U><L,U> -}
+e271eba9f711cdd232fffe79d90fb592
   readAutomaton :: GHC.Types.IO Lib.Automaton
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Lib.readAutomaton1
                   `cast`
                 (Sym (GHC.Types.N:IO[0] <Lib.Automaton>_R)) -}
-889c55665cf5b8e3e4bce154a0849116
+6b120309b53dd91083203c902da4e9c4
   readAutomaton1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Lib.Automaton #)
@@ -816,23 +1779,25 @@ ef6ecb2c0b0099aee88ce9765073c994
                                      <(GHC.Base.String, GHC.Types.Char)>_N
                                      <Data.Set.Base.Set GHC.Base.String>_R))
                            (Data.Set.Base.Tip @ GHC.Base.String)
-                           (Data.Set.Base.Tip @ GHC.Base.String) of ww { (#,,#) ww1 ww2 ww3 ->
-                    Lib.Automaton ww1 ww2 ww3 } #) } }) -}
-c39a0ab5fe3eb9f3f0a892dbfdbc04bd
+                           Lib.determinize_dt
+                           (Data.Set.Base.Tip
+                              @ GHC.Base.String) of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
+                    Lib.Automaton ww1 ww2 ww3 ww4 } #) } }) -}
+c04a079104cdaec61dcc8b5d568a7ab2
   readAutomaton2 ::
     [GHC.Base.String]
     -> GHC.Types.Bool
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Base.String] #)
   {- Arity: 3, Strictness: <L,U><S,1*U><S,U> -}
-e1b803054219b2ac0ec7460ee9bc21bf
+2852744bcb5362ee98dbade836a4e881
   readWords :: GHC.Types.IO [GHC.Base.String]
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Lib.readWords1
                   `cast`
                 (Sym (GHC.Types.N:IO[0] <[GHC.Base.String]>_R)) -}
-5e44a8a83e0f68f6946226492cb7048f
+0b7a17db9d0d00f088ed90b8f829f0c0
   readWords1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Base.String] #)
@@ -848,44 +1813,108 @@ e1b803054219b2ac0ec7460ee9bc21bf
                         ipv3
                         ipv2 of ds2 { (#,#) ipv4 ipv5 ->
                  (# ipv4, Data.OldList.lines ipv5 #) } } }) -}
-2dd03cc473a2ac62c0b354aa70e80b98
-  state :: Lib.Automaton -> Data.Set.Base.Set GHC.Base.String
+b545175343aba3d8aab35be286d8d21b
+  setAcceptingStates ::
+    Lib.Automaton -> Lib.Automaton -> Lib.Automaton
+  {- Arity: 2, Strictness: <L,U(A,U,A,A)><S,1*U(U,A,U,U)>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Lib.Automaton) (w1 :: Lib.Automaton) ->
+                 case w1 of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 case Lib.$wsetAcceptingStates
+                        w
+                        ww1
+                        ww3
+                        ww4 of ww5 { (#,,,#) ww6 ww7 ww8 ww9 ->
+                 Lib.Automaton ww6 ww7 ww8 ww9 } }) -}
+f6ff2932b376186d7bb35dd8ac4d8279
+  setDetStates :: Lib.Automaton -> Lib.Automaton
+  {- Arity: 1, Strictness: <S,1*U(U,U,U,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (aut :: Lib.Automaton) ->
+                 case aut of wild { Lib.Automaton ds ds1 ds2 ds3 ->
+                 Lib.Automaton
+                   ds
+                   ds1
+                   ds2
+                   (Data.HashMap.fold
+                      @ (Data.Set.Base.Set [GHC.Types.Char])
+                      @ (Data.Set.Base.Set [GHC.Types.Char])
+                      @ (GHC.Base.String, GHC.Types.Char)
+                      Lib.setDetStates1
+                      (Data.Set.Base.Tip @ [GHC.Types.Char])
+                      ds) }) -}
+3b9b83ae741d0dbbcea3a90fbd2201bd
+  setDetStates1 ::
+    Data.Set.Base.Set [GHC.Types.Char]
+    -> Data.Set.Base.Set [GHC.Types.Char]
+    -> Data.Set.Base.Set [GHC.Types.Char]
+  {- Arity: 2, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (v :: Data.Set.Base.Set [GHC.Types.Char])
+                   (acc :: Data.Set.Base.Set [GHC.Types.Char])[OneShot] ->
+                 case Data.Set.Base.$fDataSet1
+                        @ [GHC.Types.Char]
+                        (GHC.Types.[] @ [GHC.Types.Char])
+                        v of wild {
+                   [] -> Lib.$sinsert_$sgo5 (GHC.Types.[] @ GHC.Types.Char) acc
+                   : x xs1
+                   -> Lib.$sinsert_$sgo5
+                        (Data.OldList.intercalate_$spoly_go
+                           @ GHC.Types.Char
+                           x
+                           (Data.OldList.prependToAll
+                              @ [GHC.Types.Char]
+                              Lib.determinize4
+                              xs1))
+                        acc }) -}
+314e8977237b2866b737fcafb29579a2
+  setUniqueStateID :: Lib.Automaton -> Lib.Automaton
+  {- Arity: 1, Strictness: <S,1*U(U,1*U,U,U)>m, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Lib.Automaton) ->
+                 case w of ww { Lib.Automaton ww1 ww2 ww3 ww4 ->
+                 case Lib.$wsetUniqueStateID
+                        ww1
+                        ww2
+                        ww3
+                        ww4 of ww5 { (#,,,#) ww6 ww7 ww8 ww9 ->
+                 Lib.Automaton ww6 ww7 ww8 ww9 } }) -}
+61f8143db01da8846c987dd50d2243e5
+  starting :: Lib.Automaton -> GHC.Base.String
   RecSel Left Lib.Automaton
-  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLS),1*U(A,A,1*U)>,
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLSL),1*U(A,A,1*U,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Lib.Automaton) ->
-                 case ds of wild { Lib.Automaton ds1 ds2 ds3 -> ds3 }) -}
-4304be1307f3a7773f136de3ee0356b2
+                 case ds of wild { Lib.Automaton ds1 ds2 ds3 ds4 -> ds3 }) -}
+d6153667248f8cb6d3da9d82f0a4d66f
+  state :: Lib.Automaton -> Data.Set.Base.Set GHC.Base.String
+  RecSel Left Lib.Automaton
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLLS),1*U(A,A,A,1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Lib.Automaton) ->
+                 case ds of wild { Lib.Automaton ds1 ds2 ds3 ds4 -> ds4 }) -}
+4fca1cf448b8d06a7b6038d2131b6950
   toChar :: GHC.Base.String -> GHC.Types.Char
   {- Arity: 1, Strictness: <S,1*U>,
      Unfolding: (\ (ds :: [GHC.Types.Char]) ->
                  case ds of wild {
                    []
-                   -> case Lib.toChar4 of wild1 {
-                        GHC.Types.False -> Lib.toChar3 GHC.Types.True -> Lib.toChar2 }
+                   -> case Lib.toChar1 of wild1 {
+                        GHC.Types.False -> Lib.$fShowAutomaton3
+                        GHC.Types.True -> Lib.addEpsilon1 }
                    : x ds1
                    -> case ds1 of wild1 {
                         [] -> x
                         : ipv ipv1
-                        -> case GHC.Base.eqString wild Lib.toChar1 of wild2 {
-                             GHC.Types.False -> Lib.toChar3
-                             GHC.Types.True -> Lib.toChar2 } } }) -}
-ad76069be2c36b11faa0d6872d85bd7f
-  toChar1 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "<eps>"#) -}
-68f9a1efeb5335a90d8f97d001c87a9b
-  toChar2 :: GHC.Types.Char
-  {- HasNoCafRefs, Strictness: m,
-     Unfolding: (GHC.Types.C# '\8714'#) -}
-71f27e39ac5a9ed587987bcffc7562b6
-  toChar3 :: GHC.Types.Char
-  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# ' '#) -}
-ae4740ad4cf81acbde6c32489da15317
-  toChar4 :: GHC.Types.Bool
+                        -> case GHC.Base.eqString wild Lib.$fShowAutomaton5 of wild2 {
+                             GHC.Types.False -> Lib.$fShowAutomaton3
+                             GHC.Types.True -> Lib.addEpsilon1 } } }) -}
+bed0c2bb8ab844812fb0eaa8a24a8bc6
+  toChar1 :: GHC.Types.Bool
   {- Unfolding: (GHC.Base.eqString
                    (GHC.Types.[] @ GHC.Types.Char)
-                   Lib.toChar1) -}
-564a21819fc2456fcb42233477e26790
+                   Lib.$fShowAutomaton5) -}
+26290572e8f02f99e6803a8a7a58458a
   tranState ::
     GHC.Types.Char
     -> GHC.Base.String
@@ -902,23 +1931,32 @@ ae4740ad4cf81acbde6c32489da15317
                             (GHC.Base.String, GHC.Types.Char)
                             (Data.Set.Base.Set GHC.Base.String)) ->
                  case w of ww { GHC.Types.C# ww1 -> Lib.$wtranState ww1 w1 w2 }) -}
-8f7732b33c9bbc90a79115d6bed16200
+46a1a070b98d877747e9fbb9e08d095b
   transitions ::
     Lib.Automaton
     -> Data.HashMap.Map
          (GHC.Base.String, GHC.Types.Char)
          (Data.Set.Base.Set GHC.Base.String)
   RecSel Left Lib.Automaton
-  {- Arity: 1, HasNoCafRefs, Strictness: <S(SLL),1*U(1*U,A,A)>,
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SLLL),1*U(1*U,A,A,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Lib.Automaton) ->
-                 case ds of wild { Lib.Automaton ds1 ds2 ds3 -> ds1 }) -}
+                 case ds of wild { Lib.Automaton ds1 ds2 ds3 ds4 -> ds1 }) -}
+instance [safe] GHC.Classes.Eq [Lib.Automaton] = Lib.$fEqAutomaton
 instance [safe] GHC.Show.Show [Lib.Automaton] = Lib.$fShowAutomaton
 "SPEC/Lib $fEq(,) @ [Char] @ Char" [ALWAYS] forall ($dEq :: GHC.Classes.Eq
                                                               [GHC.Types.Char])
                                                    ($dEq1 :: GHC.Classes.Eq GHC.Types.Char)
   GHC.Classes.$fEq(,) @ [GHC.Types.Char] @ GHC.Types.Char $dEq $dEq1
-  = Lib.$s$fEq(,)
+  = Lib.$fEqAutomaton_$s$fEq(,)
+"SPEC/Lib $fEqSet @ [Char]" [ALWAYS] forall ($dEq :: GHC.Classes.Eq
+                                                       [GHC.Types.Char])
+  Data.Set.Base.$fEqSet @ [GHC.Types.Char] $dEq
+  = Lib.$fEqAutomaton_$s$fEqSet
+"SPEC/Lib $fEqSet_$c/= @ [Char]" [ALWAYS] forall ($dEq :: GHC.Classes.Eq
+                                                            [GHC.Types.Char])
+  Data.Set.Base.$fEqSet_$c/= @ [GHC.Types.Char] $dEq
+  = Lib.$fEqAutomaton_$s$fEqSet_$c/=
 "SPEC/Lib $fHashable(,) @ [Char] @ Char" [ALWAYS] forall ($dHashable :: Data.Hashable.Class.Hashable
                                                                           [GHC.Types.Char])
                                                          ($dHashable1 :: Data.Hashable.Class.Hashable
@@ -963,44 +2001,9 @@ instance [safe] GHC.Show.Show [Lib.Automaton] = Lib.$fShowAutomaton
                                $dOrd
                                $dOrd1
   = Lib.$s$fOrd(,)_$s$fOrd(,)_$cp1Ord
-"SPEC/Lib $fShow(,) @ [Char] @ Char" [ALWAYS] forall ($dShow :: GHC.Show.Show
-                                                                  [GHC.Types.Char])
-                                                     ($dShow1 :: GHC.Show.Show GHC.Types.Char)
-  GHC.Show.$fShow(,) @ [GHC.Types.Char]
-                     @ GHC.Types.Char
-                     $dShow
-                     $dShow1
-  = Lib.$fShowAutomaton_$s$fShow(,)
-"SPEC/Lib $fShow(,)_$cshow @ [Char] @ Char" [ALWAYS] forall ($dShow :: GHC.Show.Show
-                                                                         [GHC.Types.Char])
-                                                            ($dShow1 :: GHC.Show.Show
-                                                                          GHC.Types.Char)
-  GHC.Show.$fShow(,)_$cshow @ [GHC.Types.Char]
-                            @ GHC.Types.Char
-                            $dShow
-                            $dShow1
-  = Lib.$fShowAutomaton_$s$fShow(,)_$cshow
-"SPEC/Lib $fShow(,)_$cshowList @ [Char] @ Char" [ALWAYS] forall ($dShow :: GHC.Show.Show
-                                                                             [GHC.Types.Char])
-                                                                ($dShow1 :: GHC.Show.Show
-                                                                              GHC.Types.Char)
-  GHC.Show.$fShow(,)_$cshowList @ [GHC.Types.Char]
-                                @ GHC.Types.Char
-                                $dShow
-                                $dShow1
-  = Lib.$fShowAutomaton_$s$fShow(,)_$cshowList
-"SPEC/Lib $fShowSet @ [Char]" [ALWAYS] forall ($dShow :: GHC.Show.Show
-                                                           [GHC.Types.Char])
-  Data.Set.Base.$fShowSet @ [GHC.Types.Char] $dShow
-  = Lib.$fShowAutomaton_$s$fShowSet
-"SPEC/Lib $fShowSet_$cshow @ [Char]" [ALWAYS] forall ($dShow :: GHC.Show.Show
-                                                                  [GHC.Types.Char])
-  Data.Set.Base.$fShowSet_$cshow @ [GHC.Types.Char] $dShow
-  = Lib.$fShowAutomaton_$s$fShowSet_$cshow
-"SPEC/Lib $fShowSet_$cshowList @ [Char]" [ALWAYS] forall ($dShow :: GHC.Show.Show
-                                                                      [GHC.Types.Char])
-  Data.Set.Base.$fShowSet_$cshowList @ [GHC.Types.Char] $dShow
-  = Lib.$fShowAutomaton_$s$fShowSet_$cshowList
+"SPEC/Lib fromList @ [Char]" [ALWAYS] forall ($dOrd :: GHC.Classes.Ord
+                                                         [GHC.Types.Char])
+  Data.Set.Base.fromList @ [GHC.Types.Char] $dOrd = Lib.$sfromList
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

@@ -29,11 +29,11 @@ version :: Version
 version = Version [0,1,0,0] []
 bindir, libdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "/home/Programming/daut-2016-s372185/TaskB02/Automaton/.stack-work/install/x86_64-linux/lts-7.11/8.0.1/bin"
-libdir     = "/home/Programming/daut-2016-s372185/TaskB02/Automaton/.stack-work/install/x86_64-linux/lts-7.11/8.0.1/lib/x86_64-linux-ghc-8.0.1/Automaton-0.1.0.0-6bZeNUyyycTD0CxAwaZN0W"
-datadir    = "/home/Programming/daut-2016-s372185/TaskB02/Automaton/.stack-work/install/x86_64-linux/lts-7.11/8.0.1/share/x86_64-linux-ghc-8.0.1/Automaton-0.1.0.0"
-libexecdir = "/home/Programming/daut-2016-s372185/TaskB02/Automaton/.stack-work/install/x86_64-linux/lts-7.11/8.0.1/libexec"
-sysconfdir = "/home/Programming/daut-2016-s372185/TaskB02/Automaton/.stack-work/install/x86_64-linux/lts-7.11/8.0.1/etc"
+bindir     = "/home/Programming/daut-2016-s372185/TaskA49/Automaton/.stack-work/install/x86_64-linux/lts-7.11/8.0.1/bin"
+libdir     = "/home/Programming/daut-2016-s372185/TaskA49/Automaton/.stack-work/install/x86_64-linux/lts-7.11/8.0.1/lib/x86_64-linux-ghc-8.0.1/Automaton-0.1.0.0-A8Lue7XUpdkBOExGdwpYs1"
+datadir    = "/home/Programming/daut-2016-s372185/TaskA49/Automaton/.stack-work/install/x86_64-linux/lts-7.11/8.0.1/share/x86_64-linux-ghc-8.0.1/Automaton-0.1.0.0"
+libexecdir = "/home/Programming/daut-2016-s372185/TaskA49/Automaton/.stack-work/install/x86_64-linux/lts-7.11/8.0.1/libexec"
+sysconfdir = "/home/Programming/daut-2016-s372185/TaskA49/Automaton/.stack-work/install/x86_64-linux/lts-7.11/8.0.1/etc"
 
 getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "Automaton_bindir") (\_ -> return bindir)

@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2016-11-29 17:44:13.094716387 UTC
+2016-12-30 12:23:36.346657259 UTC
 
 interface main@main:Main 8001
-  interface hash: 619eb312f138f463601685082d8d9d51
-  ABI hash: a7110dd4475a5aca1f1a2a05d0833536
-  export-list hash: 653668a7a16c89a7c1757f877bfc9cd7
+  interface hash: 9cd1a08f3223d2dc1893958311206808
+  ABI hash: f2cb4319a5b433c344fa3a5b353c4597
+  export-list hash: 78db1757949a8d2f016965571ef208d9
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 8430334d10a5417b3bfdf6e523e8aab6
   sig of: Nothing
@@ -14,7 +14,7 @@ interface main@main:Main 8001
 exports:
   Main.main
 module dependencies:
-package dependencies: Automaton-0.1.0.0@Automaton-0.1.0.0-6bZeNUyyycTD0CxAwaZN0W
+package dependencies: Automaton-0.1.0.0@Automaton-0.1.0.0-A8Lue7XUpdkBOExGdwpYs1
                       array-0.5.1.1@array-0.5.1.1 base-4.9.0.0*
                       binary-0.8.3.0@binary-0.8.3.0
                       bytestring-0.10.8.1@bytestring-0.10.8.1
@@ -23,6 +23,7 @@ package dependencies: Automaton-0.1.0.0@Automaton-0.1.0.0-6bZeNUyyycTD0CxAwaZN0W
                       hashable-1.2.4.0@hashable-1.2.4.0-GnltDttmBjG9qGzcjuPOH4
                       hashmap-1.3.1.1@hashmap-1.3.1.1-EsEoa0qXwh9DIEDzax73tQ
                       integer-gmp-1.0.0.1
+                      split-0.2.3.1@split-0.2.3.1-IJKK4pOCYGKud0jZImZke
                       text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ
 orphans: base-4.9.0.0:GHC.Base base-4.9.0.0:GHC.Float
          binary-0.8.3.0@binary-0.8.3.0:Data.Binary.Generic
@@ -46,10 +47,12 @@ family instance modules: base-4.9.0.0:Control.Applicative
                          containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
                          text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ:Data.Text
                          text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ:Data.Text.Lazy
-import  -/  Automaton-0.1.0.0@Automaton-0.1.0.0-6bZeNUyyycTD0CxAwaZN0W:Lib 0441e0868569244f02f36ea3e813d319
+import  -/  Automaton-0.1.0.0@Automaton-0.1.0.0-A8Lue7XUpdkBOExGdwpYs1:Lib bf820d6046142f50864c01c57096a402
+import  -/  Automaton-0.1.0.0@Automaton-0.1.0.0-A8Lue7XUpdkBOExGdwpYs1:RegexpParser 5fd46b32d2ab42e3e6d43dc84d380206
 import  -/  base-4.9.0.0:Data.Char eb33dc25ecb52d018a0ca26590e2b50b
 import  -/  base-4.9.0.0:Data.Foldable 8aeb682f6c74f97fcf0ace0d608a43ea
 import  -/  base-4.9.0.0:Data.Functor 6fc476505db88d678632a4a838125f13
+import  -/  base-4.9.0.0:Data.OldList 0058409f994fb13ae0616e3f1e5b4dae
 import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
 import  -/  base-4.9.0.0:GHC.List 13d2451194c1c6e53b4f4f07947736dd
 import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
@@ -69,74 +72,18 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-ce050fe4914a8536ce8c0a187feea8ef
+d9c0dee8a685c5ed422401aaa63f23bf
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-3421bb110bb60ea46a4bdc2998f9bc0e
+01d62c2c484918d4b5d94b688c90c90e
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 1, Strictness: <S,U>,
-     Unfolding: (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                 case Lib.readAutomaton1 s of ds1 { (#,#) ipv ipv1 ->
-                 case Lib.readWords1 ipv of ds2 { (#,#) ipv2 ipv3 ->
-                 letrec {
-                   go :: [[GHC.Types.Char]]
-                         -> [[GHC.Types.Char]]
-                         -> GHC.Prim.State# GHC.Prim.RealWorld
-                         -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-                     {- Arity: 3, Strictness: <S,1*U><L,1*U><S,U> -}
-                   = \ (ds :: [[GHC.Types.Char]])
-                       (eta :: [[GHC.Types.Char]])
-                       (eta1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                     case ds of wild {
-                       [] -> (# eta1, GHC.Tuple.() #)
-                       : y ys
-                       -> case eta of wild1 {
-                            [] -> (# eta1, GHC.Tuple.() #)
-                            : y1 ys1
-                            -> case GHC.IO.Handle.Text.hPutStr2
-                                      GHC.IO.Handle.FD.stdout
-                                      (case ipv1 of wild2 { Lib.Automaton ds3 ds4 ds5 ->
-                                       case Lib.$wgo
-                                              y
-                                              ds3
-                                              ds4
-                                              Lib.initAutomaton1 of ww4 { (#,,#) ww5 ww6 ww7 ->
-                                       case Lib.$wisAccepted ww5 ww6 ww7 of wild3 {
-                                         GHC.Types.False
-                                         -> GHC.Base.++
-                                              @ GHC.Types.Char
-                                              Main.main3
-                                              (GHC.CString.unpackAppendCString# " "# y1)
-                                         GHC.Types.True
-                                         -> GHC.Base.++
-                                              @ GHC.Types.Char
-                                              Main.main2
-                                              (GHC.CString.unpackAppendCString# " "# y1) } } })
-                                      GHC.Types.True
-                                      eta1 of ds3 { (#,#) ipv4 ipv5 ->
-                               go ys ys1 ipv4 } } }
-                 } in
-                 go ipv3 ipv3 ipv2 } }) -}
-da9cabaed18f8a3bfe5ee1ea08b0d7af
-  main2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.Base.map
-                   @ GHC.Types.Char
-                   @ GHC.Types.Char
-                   GHC.Unicode.toUpper
-                   GHC.Show.shows20) -}
-7626e2d5ee18c27cee239d5b6c6d7ad4
-  main3 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.Base.map
-                   @ GHC.Types.Char
-                   @ GHC.Types.Char
-                   GHC.Unicode.toUpper
-                   GHC.Show.shows21) -}
-8b2df7c8270cb969cbc7ead8e55f73d2
-  main4 ::
+  {- Arity: 1, Strictness: <S,U> -}
+b08d228f4059532a99441778635cdde9
+  main2 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1,

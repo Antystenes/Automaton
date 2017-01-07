@@ -1,0 +1,610 @@
+
+==================== FINAL INTERFACE ====================
+2016-12-30 13:02:51.749375691 UTC
+
+interface Automaton-0.1.0.0-A8Lue7XUpdkBOExGdwpYs1:RegexpParser 8001
+  interface hash: 2e9ff18f0cdb8a79ffd0cf328ab6abdf
+  ABI hash: 5fd46b32d2ab42e3e6d43dc84d380206
+  export-list hash: 47b542f279a9c07d3755e5ff6abd6aa1
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: b159a15c55fa7c6870cb2eb79bbae5a5
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  RegexpParser.automatizationHelper
+  RegexpParser.automatonFromRegexp
+  RegexpParser.parse
+  RegexpParser.parser
+  RegexpParser.parserHelper1
+  RegexpParser.parserHelper2
+  RegexpParser.regexpToAutomaton
+  RegexpParser.ParsingState{RegexpParser.ParsingState nesting remaining result}
+  RegexpParser.Regexp{RegexpParser.Alt RegexpParser.Conc RegexpParser.Eps RegexpParser.Plus RegexpParser.Ques RegexpParser.Star RegexpParser.Sym}
+module dependencies: Lib
+package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.0.0*
+                      binary-0.8.3.0@binary-0.8.3.0
+                      bytestring-0.10.8.1@bytestring-0.10.8.1
+                      containers-0.5.7.1@containers-0.5.7.1
+                      deepseq-1.4.2.0@deepseq-1.4.2.0 ghc-prim-0.5.0.0
+                      hashable-1.2.4.0@hashable-1.2.4.0-GnltDttmBjG9qGzcjuPOH4
+                      hashmap-1.3.1.1@hashmap-1.3.1.1-EsEoa0qXwh9DIEDzax73tQ
+                      integer-gmp-1.0.0.1
+                      split-0.2.3.1@split-0.2.3.1-IJKK4pOCYGKud0jZImZke
+                      text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ
+orphans: base-4.9.0.0:GHC.Base base-4.9.0.0:GHC.Float
+         binary-0.8.3.0@binary-0.8.3.0:Data.Binary.Generic
+         bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Builder
+         hashable-1.2.4.0@hashable-1.2.4.0-GnltDttmBjG9qGzcjuPOH4:Data.Hashable.Generic
+         text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ:Data.Text
+         text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ:Data.Text.Lazy
+         text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ:Data.Text.Show
+family instance modules: base-4.9.0.0:Control.Applicative
+                         base-4.9.0.0:Data.Complex base-4.9.0.0:Data.Either
+                         base-4.9.0.0:Data.Functor.Const base-4.9.0.0:Data.Functor.Identity
+                         base-4.9.0.0:Data.List.NonEmpty base-4.9.0.0:Data.Monoid
+                         base-4.9.0.0:Data.Semigroup base-4.9.0.0:Data.Type.Equality
+                         base-4.9.0.0:Data.Version base-4.9.0.0:Data.Void
+                         base-4.9.0.0:GHC.Exts base-4.9.0.0:GHC.Generics
+                         base-4.9.0.0:GHC.IO.Exception base-4.9.0.0:GHC.TypeLits
+                         containers-0.5.7.1@containers-0.5.7.1:Data.IntMap.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.IntSet.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
+                         text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ:Data.Text
+                         text-1.2.2.1@text-1.2.2.1-FgcR4Xf0VlEHD9HLxzq9WJ:Data.Text.Lazy
+import  -/  Lib bf820d6046142f50864c01c57096a402
+  exports: 04860946fef934c5fc56719a9b6ed0eb
+  Automaton 8209839fdc1a46399b7cc43c40950532
+  accept 3fbdca6c45282fde84ecb4b682938b18
+  acceptingStates 9bed75e67e29f0dce57737e5806f046f
+  addAcceptState e556243f4d38c94c55e034f9e6cec5a3
+  addEpsilon a272cca942b604f6d8599faee964fc95
+  addTransition aa8b587f4b0c4c986bd1ccdfb436bcfc
+  emptyAutomaton 4ee5542d42c7574f13532f987b0cb7ec
+  mergeTrans e001440a11e313eb22b52fcd134f905c
+  prependToState aacf3f0e4b5df2ce031cd57b7c83bb17
+  setUniqueStateID 314e8977237b2866b737fcafb29579a2
+  starting 61f8143db01da8846c987dd50d2243e5
+import  -/  base-4.9.0.0:Data.Foldable 8aeb682f6c74f97fcf0ace0d608a43ea
+import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
+import  -/  base-4.9.0.0:GHC.List 13d2451194c1c6e53b4f4f07947736dd
+import  -/  base-4.9.0.0:GHC.Num 48f506a8f4ecf06285d0a0706594dcc0
+import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
+import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Set 3ed2324fd1e757464a8ac2b636a64e5a
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base 7491ab24d955eec25fba8e0d89b657f1
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+import  -/  hashmap-1.3.1.1@hashmap-1.3.1.1-EsEoa0qXwh9DIEDzax73tQ:Data.HashMap a4b722f95b5e2ec0d87fc8dfc88901ba
+102a4ea37c6230d72a32b25fba0c0eb9
+  $fEqRegexp :: GHC.Classes.Eq RegexpParser.Regexp
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ RegexpParser.Regexp
+                  RegexpParser.$fEqRegexp_$c==
+                  RegexpParser.$fEqRegexp_$c/= -}
+102a4ea37c6230d72a32b25fba0c0eb9
+  $fEqRegexp_$c/= ::
+    RegexpParser.Regexp -> RegexpParser.Regexp -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: RegexpParser.Regexp) (b :: RegexpParser.Regexp) ->
+                 case RegexpParser.$fEqRegexp_$c== a b of wild {
+                   GHC.Types.False -> GHC.Types.True
+                   GHC.Types.True -> GHC.Types.False }) -}
+102a4ea37c6230d72a32b25fba0c0eb9
+  $fEqRegexp_$c== ::
+    RegexpParser.Regexp -> RegexpParser.Regexp -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U> -}
+61bcf5a9f40e09e2fa678b4300ff22dc
+  $fShowParsingState :: GHC.Show.Show RegexpParser.ParsingState
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ RegexpParser.ParsingState
+                  RegexpParser.$fShowParsingState_$cshowsPrec1
+                  RegexpParser.$fShowParsingState_$cshow
+                  RegexpParser.$fShowParsingState_$cshowList -}
+61bcf5a9f40e09e2fa678b4300ff22dc
+  $fShowParsingState1 :: RegexpParser.ParsingState -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (\ (w :: RegexpParser.ParsingState)
+                   (w1 :: GHC.Base.String) ->
+                 case w of ww { RegexpParser.ParsingState ww1 ww2 ww3 ->
+                 RegexpParser.$w$cshowsPrec 0# ww1 ww2 ww3 w1 }) -}
+205e02b75d675f54ee62f6f5f6e02c94
+  $fShowParsingState2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "}"#) -}
+480167f7d1888838f7a1189225eabfff
+  $fShowParsingState3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "remaining = "#) -}
+a172878d27c5e7333cdf680dfef4e50f
+  $fShowParsingState4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "nesting = "#) -}
+91b74cb656a8bc226125af1101974cc4
+  $fShowParsingState5 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# ", "#) -}
+eb3880f430a20fcb4bbfa673f15180ad
+  $fShowParsingState6 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
+9f1f927a5ca01865cf31d4f2e7b6250f
+  $fShowParsingState7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "result = "#) -}
+ac608550d2b315c4cc19df6147b85e2d
+  $fShowParsingState8 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "ParsingState {"#) -}
+61bcf5a9f40e09e2fa678b4300ff22dc
+  $fShowParsingState_$cshow ::
+    RegexpParser.ParsingState -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U(1*U,1*U(U),1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: RegexpParser.ParsingState) ->
+                 RegexpParser.$fShowParsingState_$cshowsPrec1
+                   GHC.Show.shows22
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+61bcf5a9f40e09e2fa678b4300ff22dc
+  $fShowParsingState_$cshowList ::
+    [RegexpParser.ParsingState] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ RegexpParser.ParsingState
+                   RegexpParser.$fShowParsingState1) -}
+102a4ea37c6230d72a32b25fba0c0eb9
+  $fShowParsingState_$cshowsPrec ::
+    GHC.Types.Int -> RegexpParser.Regexp -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,1*U(U)><S,1*U><L,U> -}
+61bcf5a9f40e09e2fa678b4300ff22dc
+  $fShowParsingState_$cshowsPrec1 ::
+    GHC.Types.Int -> RegexpParser.ParsingState -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U,1*U(U),1*U)><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: RegexpParser.ParsingState)
+                   (w2 :: GHC.Base.String) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { RegexpParser.ParsingState ww3 ww4 ww5 ->
+                 RegexpParser.$w$cshowsPrec ww1 ww3 ww4 ww5 w2 } }) -}
+102a4ea37c6230d72a32b25fba0c0eb9
+  $fShowRegexp :: GHC.Show.Show RegexpParser.Regexp
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ RegexpParser.Regexp
+                  RegexpParser.$fShowParsingState_$cshowsPrec
+                  RegexpParser.$fShowRegexp_$cshow
+                  RegexpParser.$fShowRegexp_$cshowList -}
+102a4ea37c6230d72a32b25fba0c0eb9
+  $fShowRegexp1 :: RegexpParser.Regexp -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (RegexpParser.$fShowParsingState_$cshowsPrec
+                   RegexpParser.$fShowParsingState6) -}
+102a4ea37c6230d72a32b25fba0c0eb9
+  $fShowRegexp_$cshow :: RegexpParser.Regexp -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: RegexpParser.Regexp) ->
+                 RegexpParser.$fShowParsingState_$cshowsPrec
+                   GHC.Show.shows22
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+102a4ea37c6230d72a32b25fba0c0eb9
+  $fShowRegexp_$cshowList :: [RegexpParser.Regexp] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ RegexpParser.Regexp
+                   RegexpParser.$fShowRegexp1) -}
+cf35459b863dfa569e9175ba6e992f59
+  $tc'Alt :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   16125845987158366034##
+                   7931871250426776803##
+                   RegexpParser.$trModule
+                   RegexpParser.$tc'Alt1) -}
+396ea30caefdc91e9a46630c0aacab7e
+  $tc'Alt1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Alt"#) -}
+6ecc5b50504299ff9a94ecead15cc8b8
+  $tc'Conc :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7693118337149460412##
+                   16582483589448899065##
+                   RegexpParser.$trModule
+                   RegexpParser.$tc'Conc1) -}
+9ce0416da21e354cb852b96783393094
+  $tc'Conc1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Conc"#) -}
+f294d0d79cfeaaa4775fc37eb4ee3d97
+  $tc'Eps :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   15436198262755003374##
+                   3092436944240878104##
+                   RegexpParser.$trModule
+                   RegexpParser.$tc'Eps1) -}
+9150e4cf5aec9c6516c1b3d594f6c7d0
+  $tc'Eps1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Eps"#) -}
+b9a2784b2c32bd89b4eedd4cfb7398c2
+  $tc'ParsingState :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   11679656835004671853##
+                   15887413584678043980##
+                   RegexpParser.$trModule
+                   RegexpParser.$tc'ParsingState1) -}
+11ed5685ab99357b39adab6ad2e47b78
+  $tc'ParsingState1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'ParsingState"#) -}
+0bddcfe8c85c546238fd2829b00b5bb1
+  $tc'Plus :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   5241036387620165114##
+                   8532926026826201990##
+                   RegexpParser.$trModule
+                   RegexpParser.$tc'Plus1) -}
+c13068e3363736ccab0073358c8c4818
+  $tc'Plus1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Plus"#) -}
+ad6ab66f317e3bc7b4740b0298783d31
+  $tc'Ques :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   11994932687071350204##
+                   2888824242541040348##
+                   RegexpParser.$trModule
+                   RegexpParser.$tc'Ques1) -}
+a9e092aaf330693ccd2c4968c21c848a
+  $tc'Ques1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Ques"#) -}
+5576e258b17f18c36953cbf5ea7cd048
+  $tc'Star :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   946647579848724363##
+                   1712299264976713968##
+                   RegexpParser.$trModule
+                   RegexpParser.$tc'Star1) -}
+1a85e478a1d0124328f5c10e0e076e5a
+  $tc'Star1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Star"#) -}
+26de709ddea3a2f6ad0dc556833c78a4
+  $tc'Sym :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   14993720787131681768##
+                   2593670819889029801##
+                   RegexpParser.$trModule
+                   RegexpParser.$tc'Sym1) -}
+95da7f7f09586a7c580015ad8de93409
+  $tc'Sym1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Sym"#) -}
+24d35010fd3a65683807a15a69ffac61
+  $tcParsingState :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   10185708473350606403##
+                   8728502956695285776##
+                   RegexpParser.$trModule
+                   RegexpParser.$tcParsingState1) -}
+3da51f0c27e1ecaddddfcb0cbcce925f
+  $tcParsingState1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "ParsingState"#) -}
+978f4fb22fa9d29402d9c6bfdf7e2203
+  $tcRegexp :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   1106522012339237690##
+                   8636237653693582219##
+                   RegexpParser.$trModule
+                   RegexpParser.$tcRegexp1) -}
+36e4522f3cc221a3d8cdeb6e63b73271
+  $tcRegexp1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Regexp"#) -}
+542b2e7f0f50d7a9ea88d38ccb96de52
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   RegexpParser.$trModule2
+                   RegexpParser.$trModule1) -}
+6b5a920dcd38a27265905dd17c2c587d
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "RegexpParser"#) -}
+d781ea30af766e86ca014c3c454ad8ba
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "Automaton-0.1.0.0-A8Lue7XUpdkBOExGdwpYs1"#) -}
+373d2f262e6ec3c567bfaaee108496e7
+  $w$cshowsPrec ::
+    GHC.Prim.Int#
+    -> RegexpParser.Regexp
+    -> GHC.Types.Int
+    -> GHC.Base.String
+    -> GHC.Base.String
+    -> GHC.Base.String
+  {- Arity: 5, Strictness: <S,U><L,1*U><L,1*U(U)><L,1*U><L,U>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#)
+                   (ww1 :: RegexpParser.Regexp)
+                   (ww2 :: GHC.Types.Int)
+                   (ww3 :: GHC.Base.String)
+                   (w :: GHC.Base.String) ->
+                 let {
+                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,1*U> -}
+                   = \ (x :: GHC.Base.String)[OneShot] ->
+                     GHC.Base.++
+                       @ GHC.Types.Char
+                       RegexpParser.$fShowParsingState8
+                       (GHC.Base.++
+                          @ GHC.Types.Char
+                          RegexpParser.$fShowParsingState7
+                          (RegexpParser.$fShowParsingState_$cshowsPrec
+                             RegexpParser.$fShowParsingState6
+                             ww1
+                             (GHC.Base.++
+                                @ GHC.Types.Char
+                                RegexpParser.$fShowParsingState5
+                                (GHC.Base.++
+                                   @ GHC.Types.Char
+                                   RegexpParser.$fShowParsingState4
+                                   (case ww2 of ww4 { GHC.Types.I# ww5 ->
+                                    case GHC.Show.$wshowSignedInt
+                                           0#
+                                           ww5
+                                           (GHC.Base.++
+                                              @ GHC.Types.Char
+                                              RegexpParser.$fShowParsingState5
+                                              (GHC.Base.++
+                                                 @ GHC.Types.Char
+                                                 RegexpParser.$fShowParsingState3
+                                                 (GHC.Types.:
+                                                    @ GHC.Types.Char
+                                                    GHC.Show.shows8
+                                                    (GHC.Show.showLitString
+                                                       ww3
+                                                       (GHC.Types.:
+                                                          @ GHC.Types.Char
+                                                          GHC.Show.shows8
+                                                          (GHC.Base.++
+                                                             @ GHC.Types.Char
+                                                             RegexpParser.$fShowParsingState2
+                                                             x)))))) of ww6 { (#,#) ww7 ww8 ->
+                                    GHC.Types.: @ GHC.Types.Char ww7 ww8 } })))))
+                 } in
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 11#) of wild {
+                   GHC.Types.False -> p w
+                   GHC.Types.True
+                   -> GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.shows9
+                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w)) }) -}
+50c02ab9d7289647e6fc3ed8eae8ccf6
+  $wautomatizationHelper ::
+    GHC.Types.Char
+    -> RegexpParser.Regexp
+    -> (# Lib.Automaton, GHC.Base.String, GHC.Base.String #)
+  {- Arity: 2, Strictness: <L,U><L,1*U>, Inline: [0],
+     Unfolding: (\ (w :: GHC.Types.Char) (w1 :: RegexpParser.Regexp) ->
+                 let {
+                   a :: Lib.Automaton
+                   = case RegexpParser.$wregexpToAutomaton
+                            w1 of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
+                     case Lib.$wprependToState
+                            w
+                            ww1
+                            ww2
+                            ww3
+                            ww4 of ww5 { (#,,,#) ww6 ww7 ww8 ww9 ->
+                     Lib.Automaton ww6 ww7 ww8 ww9 } }
+                 } in
+                 (# case a of wild { Lib.Automaton ds ds1 ds2 ds3 ->
+                    Lib.Automaton
+                      ds
+                      RegexpParser.automatizationHelper2
+                      RegexpParser.automatizationHelper1
+                      ds3 },
+                    Lib.starting a,
+                    case a of wild { Lib.Automaton ds ds1 ds2 ds3 ->
+                    RegexpParser.automatizationHelper_go5
+                      (GHC.List.badHead @ [GHC.Types.Char])
+                      ds1 } #)) -}
+e4e7ac8a8e8dd0ba1993bd6521025b7e
+  $wautomatonFromRegexp ::
+    GHC.Base.String
+    -> (# Data.HashMap.Map
+            (GHC.Base.String, GHC.Types.Char)
+            (Data.Set.Base.Set GHC.Base.String),
+          Data.Set.Base.Set GHC.Base.String, GHC.Base.String,
+          Data.Set.Base.Set GHC.Base.String #)
+  {- Arity: 1, Strictness: <S,1*U>, Inline: [0],
+     Unfolding: (\ (w :: GHC.Base.String) ->
+                 case RegexpParser.$wregexpToAutomaton
+                        (RegexpParser.parse w) of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
+                 Lib.$wsetUniqueStateID ww1 ww2 ww3 ww4 }) -}
+b546e448fe5ea39888dae638de4062fc
+  $wparser ::
+    RegexpParser.Regexp
+    -> GHC.Types.Int
+    -> GHC.Base.String
+    -> (# RegexpParser.Regexp, GHC.Types.Int, GHC.Base.String #)
+  {- Arity: 3, Strictness: <L,U><L,U(U)><S,1*U>, Inline: [0] -}
+4ad2cd5dc8f7216b4e46c35031f8d920
+  $wregexpToAutomaton ::
+    RegexpParser.Regexp
+    -> (# Data.HashMap.Map
+            (GHC.Base.String, GHC.Types.Char)
+            (Data.Set.Base.Set GHC.Base.String),
+          Data.Set.Base.Set GHC.Base.String, GHC.Base.String,
+          Data.Set.Base.Set GHC.Base.String #)
+  {- Arity: 1, Strictness: <S,1*U>, Inline: [0] -}
+61bcf5a9f40e09e2fa678b4300ff22dc
+  data ParsingState
+    = ParsingState {result :: RegexpParser.Regexp,
+                    nesting :: GHC.Types.Int,
+                    remaining :: GHC.Base.String}
+102a4ea37c6230d72a32b25fba0c0eb9
+  data Regexp
+    = Sym GHC.Types.Char
+    | Plus RegexpParser.Regexp
+    | Star RegexpParser.Regexp
+    | Ques RegexpParser.Regexp
+    | Alt RegexpParser.Regexp RegexpParser.Regexp
+    | Conc RegexpParser.Regexp RegexpParser.Regexp
+    | Eps
+4103e11fa5e415858edb462e8398263a
+  automatizationHelper ::
+    GHC.Types.Char
+    -> RegexpParser.Regexp
+    -> (Lib.Automaton, GHC.Base.String, GHC.Base.String)
+  {- Arity: 2, Strictness: <L,U><L,1*U>m, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Char) (w1 :: RegexpParser.Regexp) ->
+                 case RegexpParser.$wautomatizationHelper
+                        w
+                        w1 of ww { (#,,#) ww1 ww2 ww3 ->
+                 (ww1, ww2, ww3) }) -}
+d118460b8b4bfd0348c82c89a05ba0c3
+  automatizationHelper1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "0"#) -}
+ec8751b6ad6cd2534868c99e1fc900c5
+  automatizationHelper2 :: Data.Set.Base.Set [GHC.Types.Char]
+  {- Unfolding: (Lib.$sinsert_$sgo5
+                   RegexpParser.automatizationHelper3
+                   (Data.Set.Base.Tip @ GHC.Base.String)) -}
+d499b835eb4c86529dea3c21ad821417
+  automatizationHelper3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "1"#) -}
+394c6172091e029de45eaaeae647395e
+  automatizationHelper_go5 ::
+    [GHC.Types.Char]
+    -> Data.Set.Base.Set [GHC.Types.Char] -> [GHC.Types.Char]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U><S,1*U> -}
+8d235b7ee9c9abf0ad7f408a25adc1bf
+  automatonFromRegexp :: GHC.Base.String -> Lib.Automaton
+  {- Arity: 1, Strictness: <S,1*U>m, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Base.String) ->
+                 case RegexpParser.$wautomatonFromRegexp
+                        w of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
+                 Lib.Automaton ww1 ww2 ww3 ww4 }) -}
+dc4160cc14550a8e9062a76ee8ca7830
+  nesting :: RegexpParser.ParsingState -> GHC.Types.Int
+  RecSel Left RegexpParser.ParsingState
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LSL),1*U(A,1*U(U),A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: RegexpParser.ParsingState) ->
+                 case ds of wild { RegexpParser.ParsingState ds1 ds2 ds3 ->
+                 ds2 }) -}
+ac4d241ff6d801541a7a84b84e853a7d
+  parse :: GHC.Base.String -> RegexpParser.Regexp
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: GHC.Base.String) ->
+                 case RegexpParser.parser
+                        (RegexpParser.ParsingState
+                           RegexpParser.Eps
+                           RegexpParser.$fShowParsingState6
+                           x) of wild { RegexpParser.ParsingState ds ds1 ds2 ->
+                 ds }) -}
+7bd05d1cb69969915409b917703698c7
+  parser :: RegexpParser.ParsingState -> RegexpParser.ParsingState
+  {- Arity: 1, Strictness: <S(LLS),1*U(U,U(U),1*U)>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: RegexpParser.ParsingState) ->
+                 case w of ww { RegexpParser.ParsingState ww1 ww2 ww3 ->
+                 case RegexpParser.$wparser
+                        ww1
+                        ww2
+                        ww3 of ww4 { (#,,#) ww5 ww6 ww7 ->
+                 RegexpParser.ParsingState ww5 ww6 ww7 } }) -}
+03e5bb58863f71d09bac71e8b2160f42
+  parserHelper1 ::
+    GHC.Base.String -> RegexpParser.Regexp -> RegexpParser.Regexp
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U>,
+     Unfolding: (\ (ds :: [GHC.Types.Char])
+                   (eta :: RegexpParser.Regexp) ->
+                 case ds of wild {
+                   [] -> eta
+                   : x ds1
+                   -> case x of wild1 { GHC.Types.C# ds2 ->
+                      case ds2 of ds3 {
+                        DEFAULT -> eta
+                        '*'# -> RegexpParser.Star eta
+                        '+'# -> RegexpParser.Plus eta
+                        '?'# -> RegexpParser.Ques eta } } }) -}
+fb0f77eb35b62b3a43b5793218c217f7
+  parserHelper2 :: GHC.Base.String -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (a :: GHC.Base.String) ->
+                 case a of wild {
+                   [] -> GHC.Types.[] @ GHC.Types.Char
+                   : x xs
+                   -> case GHC.List.elem
+                             @ GHC.Types.Char
+                             GHC.Classes.$fEqChar
+                             x
+                             RegexpParser.parserHelper4 of wild1 {
+                        GHC.Types.False -> wild GHC.Types.True -> xs } }) -}
+e543e0bfea50bcdc2850ecd24486c415
+  parserHelper4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "+*?"#) -}
+d43411ae4259a0cd73ecd62e0adfeedf
+  regexpToAutomaton :: RegexpParser.Regexp -> Lib.Automaton
+  {- Arity: 1, Strictness: <S,1*U>m, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: RegexpParser.Regexp) ->
+                 case RegexpParser.$wregexpToAutomaton
+                        w of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
+                 Lib.Automaton ww1 ww2 ww3 ww4 }) -}
+05eca34e6ad87eedcdf20b2fb7b018f1
+  remaining :: RegexpParser.ParsingState -> GHC.Base.String
+  RecSel Left RegexpParser.ParsingState
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLS),1*U(A,A,1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: RegexpParser.ParsingState) ->
+                 case ds of wild { RegexpParser.ParsingState ds1 ds2 ds3 ->
+                 ds3 }) -}
+a0ad668fd614fe29e6f56926858aeadf
+  result :: RegexpParser.ParsingState -> RegexpParser.Regexp
+  RecSel Left RegexpParser.ParsingState
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SLL),1*U(1*U,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: RegexpParser.ParsingState) ->
+                 case ds of wild { RegexpParser.ParsingState ds1 ds2 ds3 ->
+                 ds1 }) -}
+instance [safe] GHC.Classes.Eq [RegexpParser.Regexp]
+  = RegexpParser.$fEqRegexp
+instance [safe] GHC.Show.Show [RegexpParser.ParsingState]
+  = RegexpParser.$fShowParsingState
+instance [safe] GHC.Show.Show [RegexpParser.Regexp]
+  = RegexpParser.$fShowRegexp
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+
