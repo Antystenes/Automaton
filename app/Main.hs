@@ -9,7 +9,7 @@ main :: IO ()
 main = do
   aut <- automatonFromRegexp <$> getLine --readAutomaton
   print aut
-  print $ (determinize aut)
+--  print $ (determinize aut)
   args <- readWords
-  let result = (map ((toUpper <$>).show . isAccepted . flip processString (initAutomaton aut)) args)
-  sequence_ (putStrLn <$> (zipWith (\x y -> x++" "++y) result args)++(lines $ show aut))
+  let res = (map ((toUpper <$>).show . isAccepted . flip processString (initAutomaton aut)) args)
+  sequence_ (putStrLn <$> (zipWith (\x y -> x++" "++y) res args)) -- ++(lines $ show aut))

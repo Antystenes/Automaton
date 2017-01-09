@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-30 12:23:36.346657259 UTC
+2017-01-09 19:26:40.774344096 UTC
 
 interface main@main:Main 8001
-  interface hash: 9cd1a08f3223d2dc1893958311206808
-  ABI hash: f2cb4319a5b433c344fa3a5b353c4597
+  interface hash: f53ae508f76468263d13908646281411
+  ABI hash: ecf4d123d06f4a30ccf86e0b49c191a6
   export-list hash: 78db1757949a8d2f016965571ef208d9
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 8430334d10a5417b3bfdf6e523e8aab6
@@ -52,7 +52,6 @@ import  -/  Automaton-0.1.0.0@Automaton-0.1.0.0-A8Lue7XUpdkBOExGdwpYs1:RegexpPar
 import  -/  base-4.9.0.0:Data.Char eb33dc25ecb52d018a0ca26590e2b50b
 import  -/  base-4.9.0.0:Data.Foldable 8aeb682f6c74f97fcf0ace0d608a43ea
 import  -/  base-4.9.0.0:Data.Functor 6fc476505db88d678632a4a838125f13
-import  -/  base-4.9.0.0:Data.OldList 0058409f994fb13ae0616e3f1e5b4dae
 import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
 import  -/  base-4.9.0.0:GHC.List 13d2451194c1c6e53b4f4f07947736dd
 import  -/  base-4.9.0.0:GHC.Show 952347a6ab730bcb25c0854d8bc6ca51
@@ -72,18 +71,94 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-d9c0dee8a685c5ed422401aaa63f23bf
+ad062649c082d4b194b4ccea7bf5b39c
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-01d62c2c484918d4b5d94b688c90c90e
+6d5b99c8e4c6aed16d6034d6b885cf5e
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 1, Strictness: <S,U> -}
-b08d228f4059532a99441778635cdde9
-  main2 ::
+  {- Arity: 1, Strictness: <S,U>,
+     Unfolding: (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.IO.Handle.Internals.wantReadableHandle_1
+                        @ GHC.Base.String
+                        GHC.IO.Handle.Text.hGetLine4
+                        GHC.IO.Handle.FD.stdin
+                        GHC.IO.Handle.Text.hGetLine2
+                          `cast`
+                        (<GHC.IO.Handle.Types.Handle__>_R
+                         ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.String>_R))
+                        s of ds { (#,#) ipv ipv1 ->
+                 let {
+                   aut :: Lib.Automaton
+                   = case RegexpParser.$wautomatonFromRegexp
+                            ipv1 of ww { (#,,,#) ww1 ww2 ww3 ww4 ->
+                     Lib.Automaton ww1 ww2 ww3 ww4 }
+                 } in
+                 case GHC.IO.Handle.Text.hPutStr2
+                        GHC.IO.Handle.FD.stdout
+                        (Lib.$fShowAutomaton_$cshow aut)
+                        GHC.Types.True
+                        ipv of ds1 { (#,#) ipv2 ipv3 ->
+                 case Lib.readWords1 ipv2 of ds2 { (#,#) ipv4 ipv5 ->
+                 letrec {
+                   go :: [[GHC.Types.Char]]
+                         -> [[GHC.Types.Char]]
+                         -> GHC.Prim.State# GHC.Prim.RealWorld
+                         -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                     {- Arity: 3, Strictness: <S,1*U><L,1*U><S,U> -}
+                   = \ (ds3 :: [[GHC.Types.Char]])
+                       (eta :: [[GHC.Types.Char]])
+                       (eta1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                     case ds3 of wild {
+                       [] -> (# eta1, GHC.Tuple.() #)
+                       : y ys
+                       -> case eta of wild1 {
+                            [] -> (# eta1, GHC.Tuple.() #)
+                            : y1 ys1
+                            -> case GHC.IO.Handle.Text.hPutStr2
+                                      GHC.IO.Handle.FD.stdout
+                                      (case aut of wild2 { Lib.Automaton ds4 ds5 ds6 ds7 ->
+                                       case Lib.$wgo
+                                              y
+                                              ds4
+                                              ds5
+                                              ds6
+                                              Lib.determinize10 of ww5 { (#,,,#) ww6 ww7 ww8 ww9 ->
+                                       case Lib.$wisAccepted ww6 ww7 ww8 ww9 of wild3 {
+                                         GHC.Types.False
+                                         -> GHC.Base.++
+                                              @ GHC.Types.Char
+                                              Main.main3
+                                              (GHC.CString.unpackAppendCString# " "# y1)
+                                         GHC.Types.True
+                                         -> GHC.Base.++
+                                              @ GHC.Types.Char
+                                              Main.main2
+                                              (GHC.CString.unpackAppendCString# " "# y1) } } })
+                                      GHC.Types.True
+                                      eta1 of ds4 { (#,#) ipv6 ipv7 ->
+                               go ys ys1 ipv6 } } }
+                 } in
+                 go ipv5 ipv5 ipv4 } } }) -}
+da9cabaed18f8a3bfe5ee1ea08b0d7af
+  main2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.Base.map
+                   @ GHC.Types.Char
+                   @ GHC.Types.Char
+                   GHC.Unicode.toUpper
+                   GHC.Show.shows20) -}
+7626e2d5ee18c27cee239d5b6c6d7ad4
+  main3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.Base.map
+                   @ GHC.Types.Char
+                   @ GHC.Types.Char
+                   GHC.Unicode.toUpper
+                   GHC.Show.shows21) -}
+eea54415f7f78b18a54dde2cf866a86b
+  main4 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1,

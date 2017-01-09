@@ -91,19 +91,19 @@ regexpToAutomaton x = case x of    -- by convention beginning state of result is
     where aut = regexpToAutomaton r
           beg = starting aut
           end = head . acceptingStates $ aut
-  Alt r q   -> addEpsilon en2 "1" .
+  Alt r s   -> addEpsilon en2 "1" .
                addEpsilon en1 "1" .
                addEpsilon "0" be2 .
                addEpsilon "0" be1 $
                aut
     where aut = mergeTrans au1 au2
           (au1, be1, en1) = automatizationHelper 'r' r
-          (au2, be2, en2) = automatizationHelper 'q' q
-  Conc r q  -> addEpsilon en1 be2 $
+          (au2, be2, en2) = automatizationHelper 's' s
+  Conc r s  -> addEpsilon en1 be2 $
                aut { accept = S.singleton en2, starting = be1}
     where aut = mergeTrans au1 au2
           (au1, be1, en1) = automatizationHelper 'r' r
-          (au2, be2, en2) = automatizationHelper 'q' q
+          (au2, be2, en2) = automatizationHelper 's' s
   Eps       -> emptyAutomaton
 
 automatizationHelper :: Char -> Regexp -> (Automaton, String, String)
@@ -113,4 +113,4 @@ automatizationHelper c r = ( addAcceptState "1" $ a {accept = (accept emptyAutom
         end = head . acceptingStates $ a
 
 automatonFromRegexp :: String -> Automaton
-automatonFromRegexp = setUniqueStateID . regexpToAutomaton . parse
+automatonFromRegexp = (setUniqueStateID) . regexpToAutomaton . parse
